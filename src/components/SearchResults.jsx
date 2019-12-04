@@ -38,20 +38,20 @@ const SearchResults = props => {
       {results}
       {props.results.length > 0 ? (
         <div className="results-page-control">
-          {props.page > 0 && (
-            <div
-              onClick={() => props.searchNewPage(props.page - 1)}
-              className="prev-page"
-            >
-              Prev
-            </div>
-          )}
           {results.length === 20 && (
             <div
               onClick={() => props.searchNewPage(props.page + 1)}
-              className="next-page"
+              className="page-button next-page"
             >
               Next
+            </div>
+          )}
+          {props.page > 0 && (
+            <div
+              onClick={() => props.searchNewPage(props.page - 1)}
+              className="page-button prev-page"
+            >
+              Prev
             </div>
           )}
         </div>

@@ -7,8 +7,10 @@ const Search = props => {
   const [term, setTerm] = useState('')
   const [results, setResults] = useState([])
   const [page, setPage] = useState(0)
-  const handleSearch = async (searchTerm, pageNum) => {
-    setResults([])
+  const handleSearch = async (searchTerm, pageNum, maintain) => {
+    if (!maintain) {
+      setResults([])
+    }
     setTerm(searchTerm)
     let searchPage
     if (pageNum && pageNum !== page) {
@@ -16,7 +18,7 @@ const Search = props => {
     } else {
       searchPage = page
     }
-    console.log(searchPage)
+
     const options = {
       url: `/api/lyrics/search?term=${searchTerm}&page=${searchPage}`,
       method: 'GET',
@@ -27,16 +29,14 @@ const Search = props => {
         response: { hits: songs },
       },
     } = await axios(options)
-
     console.log(songs)
-
     setResults(songs)
   }
 
   const searchNewPage = newPage => {
-    console.log(newPage)
-    setPage(newPage)
-    handleSearch(term, newPage)
+    handleSearch(term, newPage, true).then(() => {
+      setPage(newPage)
+    })
   }
   return (
     <div className="Search">

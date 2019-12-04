@@ -9,8 +9,11 @@ const { analyze } = require('../functions')
 module.exports = {
   search: async (req, res) => {
     const { term, page } = req.query
-    console.log(term, page)
-    const format = querystring.stringify({ q: term, per_page: 50, page: page })
+    const format = querystring.stringify({
+      q: term,
+      per_page: 20,
+      page: +page + 1,
+    })
     const options = {
       url: `https://api.genius.com/search?${format}`,
       method: 'GET',
