@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { BounceLoader } from 'react-spinners'
 
 const SearchResults = props => {
   const getLyrics = async url => {
@@ -9,8 +10,8 @@ const SearchResults = props => {
       method: 'GET',
     }
 
-    const stats = await axios(options)
-    console.log(stats)
+    const { data: stats } = await axios(options)
+    props.setStats(stats)
   }
 
   const results = props.results.map(element => {
@@ -55,7 +56,14 @@ const SearchResults = props => {
             </div>
           )}
         </div>
-      ) : null}
+      ) : (
+        props.loadingSearch && (
+          <div className="loading">
+            <BounceLoader />
+            <p className="loading-text">Loading</p>
+          </div>
+        )
+      )}
     </div>
   )
 }

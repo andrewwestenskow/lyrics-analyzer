@@ -9,13 +9,15 @@ const SearchInput = props => {
     setSearch('')
   }
   return (
-    <form onSubmit={handleSearch}>
+    <form className="search-form" onSubmit={handleSearch}>
       <input
         value={search}
         onChange={e => setSearch(e.target.value)}
         type="text"
       />
-      <button type="submit">Search</button>
+      <button className="search-button" type="submit">
+        Search
+      </button>
     </form>
   )
 }

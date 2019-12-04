@@ -7,10 +7,12 @@ const Search = props => {
   const [term, setTerm] = useState('')
   const [results, setResults] = useState([])
   const [page, setPage] = useState(0)
-  const handleSearch = async (searchTerm, pageNum, maintain) => {
-    if (!maintain) {
-      setResults([])
-    }
+  const [loadingSearch, setLoadingSearch] = useState(false)
+  const handleSearch = async (searchTerm, pageNum) => {
+    setLoadingSearch(true)
+
+    setResults([])
+
     setTerm(searchTerm)
     let searchPage
     if (pageNum && pageNum !== page) {
@@ -29,12 +31,12 @@ const Search = props => {
         response: { hits: songs },
       },
     } = await axios(options)
-    console.log(songs)
     setResults(songs)
+    setLoadingSearch(false)
   }
 
   const searchNewPage = newPage => {
-    handleSearch(term, newPage, true).then(() => {
+    handleSearch(term, newPage).then(() => {
       setPage(newPage)
     })
   }
@@ -42,6 +44,8 @@ const Search = props => {
     <div className="Search">
       <SearchInput handleSearch={handleSearch} />
       <SearchResults
+        setStats={props.setStats}
+        loadingSearch={loadingSearch}
         page={page}
         searchNewPage={searchNewPage}
         searchTerm={term}
