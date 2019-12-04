@@ -1,4 +1,4 @@
-const { exclusions } = require('./constants')
+const { exclusions, commonWords } = require('./constants')
 
 module.exports = {
   analyze: lyrics => {
@@ -8,7 +8,7 @@ module.exports = {
       (element, index, array) => (array[index] = element.toLowerCase().trim())
     )
 
-    const tracker = lyricArr
+    const phrases = lyricArr
       .reduce((acc, element) => {
         const index = acc.findIndex(phrase => phrase.phrase === element)
 
@@ -30,7 +30,9 @@ module.exports = {
             })
           } else {
             acc[index2].count++
-            acc[index2].variations.push(element)
+            if (!acc[index2].variations.includes(element)) {
+              acc[index2].variations.push(element)
+            }
           }
         } else {
           acc[index].count++
@@ -55,6 +57,60 @@ module.exports = {
         }
       })
 
-    return tracker
+    const wordCount = lyrics
+      .split(/[\s,()]|,\s/)
+      .reduce((acc, element) => {
+        if (
+          element === '' ||
+          element[0] === '[' ||
+          element[element.length - 1] === ']'
+        ) {
+          return acc
+        }
+        const index = acc.findIndex(word => word.word === element.toLowerCase())
+
+        if (index === -1) {
+          acc.push({ word: element.toLowerCase(), count: 1 })
+          return acc
+        } else {
+          acc[index].count++
+          return acc
+        }
+      }, [])
+      .sort((a, b) => {
+        if (a.count < b.count) {
+          return 1
+        } else if (b.count < a.count) {
+          return -1
+        } else {
+          return 0
+        }
+      })
+      .reduce(
+        (acc, element) => {
+          if (commonWords.includes(element.word)) {
+            acc.common.push(element)
+            return acc
+          } else {
+            acc.complex.push(element)
+            return acc
+          }
+        },
+        { common: [], complex: [] }
+      )
+
+    const stats = {
+      uniqueWords: wordCount.common.length + wordCount.complex.length,
+      commonWords: wordCount.common.length,
+      complexWords: wordCount.complex.length,
+    }
+
+    const songStats = {
+      phrases,
+      wordCount,
+      stats,
+    }
+
+    return songStats
   },
 }
