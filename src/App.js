@@ -1,11 +1,11 @@
 import React from 'react'
-import LeftSide from './components/LeftSide'
-import './App.css'
+import Search from './components/Search'
+import './App.scss'
 
 function App() {
   return (
     <div className="App">
-      <LeftSide />
+      <Search />
     </div>
   )
 }
