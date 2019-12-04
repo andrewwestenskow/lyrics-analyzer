@@ -1,0 +1,48 @@
+.Search {
+  height: $header-height;
+  width: 100vw;
+  @include center-all;
+  background: black;
+  position: relative;
+
+  .Search-Results {
+    position: absolute;
+    top: $header-height;
+    width: 100%;
+    transition: all 1s linear;
+    display: flex;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.25);
+    .result-hold {
+      width: 25%;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      &:hover {
+        background: black;
+        color: white;
+        cursor: pointer;
+      }
+      .result-image {
+        height: 100%;
+        min-width: 80px;
+        max-width: 80px;
+      }
+      .result-text-hold {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+        justify-content: center;
+        .result-hold-title {
+          font-size: 1.4rem;
+          font-weight: 700;
+        }
+        .result-hold-artist {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}

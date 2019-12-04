@@ -8,8 +8,9 @@ const { analyze } = require('../functions')
 
 module.exports = {
   search: async (req, res) => {
-    const { term } = req.query
-    const format = querystring.stringify({ q: term })
+    const { term, page } = req.query
+    console.log(term, page)
+    const format = querystring.stringify({ q: term, per_page: 50, page: page })
     const options = {
       url: `https://api.genius.com/search?${format}`,
       method: 'GET',
@@ -24,16 +25,10 @@ module.exports = {
     }
   },
   getLyrics: async (req, res) => {
-    const { id } = req.query
-    const options = {
-      url: `https://api.genius.com/songs/${id}`,
-      method: 'GET',
-      headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-    }
+    const { url } = req.query
 
     try {
-      const { data: lyrics } = await axios(options)
-      request(lyrics.response.song.url, (err, result, html) => {
+      request(url, (err, result, html) => {
         if (!err) {
           let newLyrics
           const $ = cheerio.load(html)
