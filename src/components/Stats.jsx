@@ -11,6 +11,7 @@ const Stats = props => {
         <div className="large-chart-hold common-vs-complex-bar">
           <p className="chart-label">Complex words by appearance</p>
           <ResponsiveTreeMap
+            isInteractive={false}
             root={stats.wordCount}
             colors={{ scheme: 'pastel1' }}
           />
