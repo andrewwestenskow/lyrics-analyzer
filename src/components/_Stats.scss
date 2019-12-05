@@ -2,14 +2,6 @@
   @include main-content-reset;
 }
 
-.large-chart-hold {
-  height: 25vw;
-  width: 50vw;
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-}
-
 .chart-hold {
   height: 25vw;
   width: 25vw;
@@ -18,8 +10,16 @@
   padding: 10px;
   div {
     position: relative;
-    z-index: -5;
+    z-index: 0;
   }
+}
+
+.large-chart-hold {
+  height: 25vw;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
 
 .chart-label {

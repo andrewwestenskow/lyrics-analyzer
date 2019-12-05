@@ -13,7 +13,8 @@ export const regularTheme = {
 export const largeTheme = {
   labels: {
     text: {
-      fontSize: 24,
+      fontSize: 36,
+      fontWeight: 700,
     },
   },
 }
