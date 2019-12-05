@@ -9,6 +9,9 @@ const Stats = props => {
   return (
     <div className="Stats">
       <section className="stats-section">
+        <h1 className="stats-section-header">Word Count</h1>
+      </section>
+      <section className="stats-section">
         <div className="chart-hold">
           <p className="chart-label">Total Unique Words</p>
           <ResponsivePie
@@ -34,6 +37,7 @@ const Stats = props => {
             borderColor="black"
             borderWidth={3}
             label={d => `${d.id} - ${d.value}`}
+            labelTextColor={{ from: 'color', modifiers: [['darker', '2']] }}
             animate={true}
             motionStiffness={90}
             motionDamping={15}

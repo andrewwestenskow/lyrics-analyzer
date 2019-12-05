@@ -3,9 +3,9 @@ export const regularTheme = {
     text: {
       fontSize: 16,
       color: 'black',
-      fontWeight: 700,
       textTransform: 'capitalize',
       wordWrap: 'break-word',
+      fontWeight: 700,
     },
   },
 }
