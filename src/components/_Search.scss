@@ -2,18 +2,24 @@
   height: $header-height;
   width: 100vw;
   @include center-all;
-  background: black;
-  position: relative;
+  background: rgb(25, 25, 25);
+  position: fixed;
+  top: 0;
   .Search-Results {
     position: absolute;
+    z-index: 99;
     top: $header-height;
     width: 100%;
-    transition: all 1s;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    background: rgba(0, 0, 0, 0.25);
+    color: white;
+    background-image: linear-gradient(
+      to bottom,
+      rgb(25, 25, 25) 25%,
+      rgba(25, 25, 25, 0.8)
+    );
     .loading {
       width: 50%;
       height: 250px;
@@ -66,7 +72,7 @@
       justify-content: space-between;
       margin-bottom: 10px;
       .page-button {
-        border: 1px solid black;
+        border: 1px solid white;
         padding: 5px;
         cursor: pointer;
         &:hover {

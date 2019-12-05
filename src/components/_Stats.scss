@@ -1,0 +1,31 @@
+.Stats {
+  @include main-content-reset;
+}
+
+.large-chart-hold {
+  height: 25vw;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-hold {
+  height: 25vw;
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+  div {
+    position: relative;
+    z-index: -5;
+  }
+  .chart-label {
+    padding: 15px;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+}
+
+.stats-section {
+  width: 100%;
+  display: flex;
+}

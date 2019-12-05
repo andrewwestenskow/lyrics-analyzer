@@ -67,20 +67,20 @@ module.exports = {
         ) {
           return acc
         }
-        const index = acc.findIndex(word => word.word === element.toLowerCase())
+        const index = acc.findIndex(word => word.id === element.toLowerCase())
 
         if (index === -1) {
-          acc.push({ word: element.toLowerCase(), count: 1 })
+          acc.push({ id: element.toLowerCase(), value: 1 })
           return acc
         } else {
-          acc[index].count++
+          acc[index].value++
           return acc
         }
       }, [])
       .sort((a, b) => {
-        if (a.count < b.count) {
+        if (a.value < b.value) {
           return 1
-        } else if (b.count < a.count) {
+        } else if (b.value < a.value) {
           return -1
         } else {
           return 0
@@ -88,22 +88,49 @@ module.exports = {
       })
       .reduce(
         (acc, element) => {
-          if (commonWords.includes(element.word)) {
-            acc.common.push(element)
+          if (commonWords.includes(element.id)) {
+            acc.children[0].children.push(element)
             return acc
           } else {
-            acc.complex.push(element)
+            acc.children[1].children.push(element)
             return acc
           }
         },
-        { common: [], complex: [] }
+        {
+          id: 'wordCount',
+          children: [
+            {
+              id: 'common',
+              children: [],
+            },
+            {
+              id: 'complex',
+              children: [],
+            },
+          ],
+        }
       )
 
-    const stats = {
-      uniqueWords: wordCount.common.length + wordCount.complex.length,
-      commonWords: wordCount.common.length,
-      complexWords: wordCount.complex.length,
-    }
+    // const stats = {
+    //   uniqueWords: wordCount.common.length + wordCount.complex.length,
+    //   commonWords: wordCount.common.length,
+    //   complexWords: wordCount.complex.length,
+    // }
+
+    const stats = [
+      {
+        id: 'common',
+        label: 'Common',
+        value: wordCount.children[0].children.length,
+      },
+      {
+        id: 'complex',
+        label: 'Complex',
+        value: wordCount.children[1].children.length,
+      },
+    ]
+
+    wordCount.children[1].children.splice(25, Infinity)
 
     const songStats = {
       phrases,
