@@ -130,12 +130,24 @@ module.exports = {
       },
     ]
 
+    const totalUnique = [
+      {
+        id: 'total',
+        label: 'Total',
+        value:
+          wordCount.children[0].children.length +
+          wordCount.children[1].children.length,
+      },
+    ]
+
     wordCount.children[1].children.splice(25, Infinity)
 
     const songStats = {
       phrases,
       wordCount,
       stats,
+      totalUnique,
+      commonWords,
     }
 
     return songStats
