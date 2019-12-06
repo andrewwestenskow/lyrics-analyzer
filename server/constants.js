@@ -1,5 +1,5 @@
 module.exports = {
-  exclusions: ['no'],
+  exclusions: ['no', 'yo'],
   commonWords: [
     'oh',
     'it',
@@ -12,5 +12,7 @@ module.exports = {
     'in',
     'the',
     'with',
+    '&',
+    'is',
   ],
 }

@@ -90,6 +90,7 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -130,9 +131,4 @@ table {
 
 * {
   box-sizing: border-box;
-}
-
-canvas {
-  max-height: 100%;
-  max-width: 100%;
 }

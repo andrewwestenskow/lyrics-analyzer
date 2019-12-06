@@ -4,6 +4,7 @@
   @include center-all;
   background: rgb(25, 25, 25);
   position: fixed;
+  z-index: 99;
   top: 0;
   .Search-Results {
     position: absolute;

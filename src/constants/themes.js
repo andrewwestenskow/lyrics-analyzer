@@ -10,6 +10,14 @@ export const regularTheme = {
   },
 }
 
+export const largeSquareTheme = {
+  labels: {
+    text: {
+      wordWrap: 'break-word',
+    },
+  },
+}
+
 export const largeTheme = {
   labels: {
     text: {

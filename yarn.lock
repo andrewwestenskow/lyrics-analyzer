@@ -1144,6 +1144,19 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
+"@nivo/circle-packing@^0.59.1":
+  version "0.59.1"
+  resolved "https://registry.yarnpkg.com/@nivo/circle-packing/-/circle-packing-0.59.1.tgz#c1c95e4eabac374d5946ea02e381071dc51f031b"
+  integrity sha512-a7aZ58VRestwXbJWhA5y4DQBKY40hDJhDFmedNOCim+/6rTbLh++JDozOxLpULsDxeQZ4uE40vn8Xr8kR64ctA==
+  dependencies:
+    "@nivo/colors" "0.59.0"
+    "@nivo/core" "0.59.1"
+    "@nivo/tooltip" "0.59.1"
+    d3-hierarchy "^1.1.8"
+    lodash "^4.17.11"
+    react-motion "^0.5.2"
+    recompose "^0.30.0"
+
 "@nivo/colors@0.59.0":
   version "0.59.0"
   resolved "https://registry.yarnpkg.com/@nivo/colors/-/colors-0.59.0.tgz#326f7941de7387099732143063f657a461bd1dfb"
@@ -1175,7 +1188,7 @@
     react-motion "^0.5.2"
     recompose "^0.30.0"
 
-"@nivo/core@0.59.1":
+"@nivo/core@0.59.1", "@nivo/core@^0.59.1":
   version "0.59.1"
   resolved "https://registry.yarnpkg.com/@nivo/core/-/core-0.59.1.tgz#2fd19d8963a2279a40746ff8f18ea9ad286bb447"
   integrity sha512-eh/A6KKfsp2tGzZp5ofD8APueLfq7rASk5OIQawqpwgWEWJ3bOFfAvxN67U0mnAtJlbOhZuZiXoivFYXJ8nReQ==

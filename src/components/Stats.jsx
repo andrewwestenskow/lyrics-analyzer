@@ -1,7 +1,8 @@
 import React from 'react'
 import { ResponsivePie } from '@nivo/pie'
 import { ResponsiveTreeMap } from '@nivo/treemap'
-import { regularTheme, largeTheme } from '../constants/themes'
+import { ResponsiveBubble } from '@nivo/circle-packing'
+import { regularTheme, largeTheme, largeSquareTheme } from '../constants/themes'
 
 const Stats = props => {
   const { stats } = props
@@ -52,11 +53,29 @@ const Stats = props => {
             enableRadialLabels={false}
             enableSlicesLabels={true}
             sliceLabel={d => `${d.label} - ${d.value}`}
-            colors={{ scheme: 'category10' }}
+            colors={{ scheme: 'nivo' }}
             animate={true}
             motionStiffness={90}
             motionDamping={15}
             theme={regularTheme}
+          />
+        </div>
+      </section>
+      <section className="stats-section">
+        <h1 className="stats-section-header">Phrases</h1>
+      </section>
+      <section className="stats-section">
+        <div className="large-square-chart-hold">
+          <p className="chart-label">Most common phrases</p>
+          <ResponsiveBubble
+            root={stats.phrases}
+            colors={{ scheme: 'nivo' }}
+            animate={true}
+            motionStiffness={90}
+            motionDamping={15}
+            theme={largeSquareTheme}
+            isInteractive={true}
+            isZoomable={true}
           />
         </div>
       </section>

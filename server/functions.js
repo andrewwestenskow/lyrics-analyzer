@@ -8,54 +8,74 @@ module.exports = {
       (element, index, array) => (array[index] = element.toLowerCase().trim())
     )
 
-    const phrases = lyricArr
-      .reduce((acc, element) => {
-        const index = acc.findIndex(phrase => phrase.phrase === element)
+    const phrases = lyricArr.reduce(
+      (acc, element, ogIndex) => {
+        const index = acc.children.findIndex(phrase => phrase.id === element)
 
         if (element === '') {
           return acc
         }
 
         if (index === -1) {
-          const index2 = acc.findIndex(phrase => {
-            return (
-              phrase.phrase.includes(element) && !exclusions.includes(element)
-            )
+          const index2 = acc.children.findIndex(phrase => {
+            return phrase.id.includes(element) && !exclusions.includes(element)
           })
           if (index2 === -1) {
-            acc.push({
-              phrase: element,
-              variations: [],
-              count: 1,
+            acc.children.push({
+              id: element,
+              value: 1,
             })
           } else {
-            acc[index2].count++
-            if (!acc[index2].variations.includes(element)) {
-              acc[index2].variations.push(element)
+            acc.children[index2].value++
+            if (acc.children[index2].children) {
+              const index3 = acc.children[index2].children.findIndex(
+                variation => variation.id === element
+              )
+              if (index3 === -1) {
+                acc.children[index2].children.push({ id: element, value: 1 })
+              } else {
+                acc.children[index2].children[index3].value++
+              }
+            } else {
+              acc.children[index2].children = [
+                { id: element, value: 1 },
+                { id: '', value: 0 },
+              ]
             }
           }
         } else {
-          acc[index].count++
+          acc.children[index].value++
         }
 
-        return acc
-      }, [])
-      .sort((a, b) => {
-        if (a.count < b.count) {
-          return 1
-        } else if (a.count > b.count) {
-          return -1
+        if (ogIndex === lyricArr.length - 1) {
+          const newChildren = acc.children
+            .filter(element => {
+              if (element.id[0] === '[') {
+                return false
+              } else {
+                return true
+              }
+            })
+            .sort((a, b) => {
+              if (a.value < b.value) {
+                return 1
+              } else if (b.value < a.value) {
+                return -1
+              } else {
+                return 0
+              }
+            })
+
+          newChildren.splice(10, Infinity)
+
+          acc.children = newChildren
+          return acc
         } else {
-          return 0
+          return acc
         }
-      })
-      .filter(element => {
-        if (element.phrase[0] === '[') {
-          return false
-        } else {
-          return true
-        }
-      })
+      },
+      { name: 'phrases', children: [] }
+    )
 
     const wordCount = lyrics
       .split(/[\s,()]|,\s/)
