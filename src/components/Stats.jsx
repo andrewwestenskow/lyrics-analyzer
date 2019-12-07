@@ -1,8 +1,8 @@
 import React from 'react'
-import { ResponsivePie } from '@nivo/pie'
 import { ResponsiveTreeMap } from '@nivo/treemap'
 import { ResponsiveBubble } from '@nivo/circle-packing'
-import { regularTheme, largeTheme, largeSquareTheme } from '../constants/themes'
+import { ResponsiveContainer, PieChart, Pie, Label } from 'recharts'
+import { regularTheme, largeSquareTheme } from '../constants/themes'
 
 const Stats = props => {
   const { stats } = props
@@ -15,7 +15,7 @@ const Stats = props => {
       <section className="stats-section">
         <div className="chart-hold">
           <p className="chart-label">Total Unique Words</p>
-          <ResponsivePie
+          {/* <ResponsivePie
             sortByValue={true}
             data={stats.totalUnique}
             enableRadialLabels={false}
@@ -26,7 +26,36 @@ const Stats = props => {
             motionStiffness={90}
             motionDamping={15}
             theme={largeTheme}
-          />
+          /> */}
+          <ResponsiveContainer width="100%" height="100%">
+            <PieChart>
+              <Pie
+                data={stats.totalUnique}
+                dataKey="value"
+                outerRadius="85%"
+                fill="#8884d8"
+                startAngle={180}
+                endAngle={540}
+              >
+                <Label
+                  value={`Total Unique Words: ${stats.totalUnique[0].value}`}
+                  position="insideStart"
+                />
+                {/* <Label
+                  offset={10}
+                  value={stats.totalUnique[0].value}
+                  position="center"
+                /> */}
+              </Pie>
+              <Pie
+                data={stats.stats}
+                dataKey="value"
+                innerRadius="85%"
+                outerRadius="100%"
+                fill="#82ca9d"
+              ></Pie>
+            </PieChart>
+          </ResponsiveContainer>
         </div>
         <div className="large-chart-hold common-vs-complex-bar">
           <p className="chart-label">Complex words by appearance</p>
@@ -39,21 +68,6 @@ const Stats = props => {
             borderWidth={3}
             label={d => `${d.id} - ${d.value}`}
             labelTextColor={{ from: 'color', modifiers: [['darker', '2']] }}
-            animate={true}
-            motionStiffness={90}
-            motionDamping={15}
-            theme={regularTheme}
-          />
-        </div>
-        <div className="chart-hold common-vs-complex-chart">
-          <p className="chart-label">Common vs Complex words</p>
-          <ResponsivePie
-            sortByValue={true}
-            data={stats.stats}
-            enableRadialLabels={false}
-            enableSlicesLabels={true}
-            sliceLabel={d => `${d.label} - ${d.value}`}
-            colors={{ scheme: 'nivo' }}
             animate={true}
             motionStiffness={90}
             motionDamping={15}
