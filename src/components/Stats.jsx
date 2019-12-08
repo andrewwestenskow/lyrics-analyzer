@@ -8,8 +8,10 @@ import {
   Label,
   Cell,
   Legend,
+  Tooltip,
 } from 'recharts'
 import { regularTheme, largeSquareTheme, pieColors } from '../constants/themes'
+import { WordCountTooltip } from '../constants/labels'
 
 const Stats = props => {
   const { stats } = props
@@ -47,6 +49,7 @@ const Stats = props => {
                   return <Cell key={index} fill={pieColors[index]} />
                 })}
               </Pie>
+              <Tooltip content={<WordCountTooltip />} />
               <Legend
                 payload={stats.stats.map((element, index) => ({
                   id: element.name,
