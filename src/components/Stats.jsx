@@ -1,8 +1,15 @@
 import React from 'react'
 import { ResponsiveTreeMap } from '@nivo/treemap'
 import { ResponsiveBubble } from '@nivo/circle-packing'
-import { ResponsiveContainer, PieChart, Pie, Label } from 'recharts'
-import { regularTheme, largeSquareTheme } from '../constants/themes'
+import {
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Label,
+  Cell,
+  Legend,
+} from 'recharts'
+import { regularTheme, largeSquareTheme, pieColors } from '../constants/themes'
 
 const Stats = props => {
   const { stats } = props
@@ -14,46 +21,42 @@ const Stats = props => {
       </section>
       <section className="stats-section">
         <div className="chart-hold">
-          <p className="chart-label">Total Unique Words</p>
-          {/* <ResponsivePie
-            sortByValue={true}
-            data={stats.totalUnique}
-            enableRadialLabels={false}
-            enableSlicesLabels={true}
-            sliceLabel={d => `${d.value}`}
-            colors={{ scheme: 'dark2' }}
-            animate={true}
-            motionStiffness={90}
-            motionDamping={15}
-            theme={largeTheme}
-          /> */}
+          <p className="chart-label">Unique Word Count</p>
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
+                stroke="none"
                 data={stats.totalUnique}
-                dataKey="value"
-                outerRadius="85%"
+                outerRadius="70%"
                 fill="#8884d8"
                 startAngle={180}
                 endAngle={540}
               >
                 <Label
                   value={`Total Unique Words: ${stats.totalUnique[0].value}`}
-                  position="insideStart"
-                />
-                {/* <Label
-                  offset={10}
-                  value={stats.totalUnique[0].value}
                   position="center"
-                /> */}
+                />
               </Pie>
               <Pie
+                paddingAngle={5}
                 data={stats.stats}
-                dataKey="value"
-                innerRadius="85%"
-                outerRadius="100%"
-                fill="#82ca9d"
-              ></Pie>
+                innerRadius="80%"
+                outerRadius="95%"
+              >
+                {stats.stats.map((element, index) => {
+                  return <Cell key={index} fill={pieColors[index]} />
+                })}
+              </Pie>
+              <Legend
+                payload={stats.stats.map((element, index) => ({
+                  id: element.name,
+                  type: 'square',
+                  color: pieColors[index],
+                  value: `${element.label} - ${element.value}`,
+                }))}
+                verticalAlign="bottom"
+                iconType="square"
+              />
             </PieChart>
           </ResponsiveContainer>
         </div>

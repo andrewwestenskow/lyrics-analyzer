@@ -26,3 +26,12 @@ export const largeTheme = {
     },
   },
 }
+
+export const pieColors = [
+  '#F66D44',
+  '#64C2A6',
+  '#FEAE65',
+  '#2D87BB',
+  '#AADEA7',
+  '#E6F69D',
+]
