@@ -30,6 +30,13 @@ export const WordCountTooltip = ({ active, payload, label }) => {
             </ul>
           </div>
         )
+      } else if ((info.label = 'Profanity')) {
+        return (
+          <div className="custom-tooltip">
+            <p className="data">{info.payload.value}</p>
+            <p className="label">The total number of unique profanities used</p>
+          </div>
+        )
       }
     }
   }

@@ -1,4 +1,4 @@
-const { exclusions, commonWords } = require('./constants')
+const { exclusions, commonWords, profanity } = require('./constants')
 
 module.exports = {
   analyze: lyrics => {
@@ -39,7 +39,7 @@ module.exports = {
             } else {
               acc.children[index2].children = [
                 { id: element, value: 1 },
-                { id: '', value: 0 },
+                { id: '', value: 1, color: `rgba(255,255,255, 0.0)` },
               ]
             }
           }
@@ -111,6 +111,9 @@ module.exports = {
           if (commonWords.includes(element.id)) {
             acc.children[0].children.push(element)
             return acc
+          } else if (profanity.includes(element.id)) {
+            acc.children[2].children.push(element)
+            return acc
           } else {
             acc.children[1].children.push(element)
             return acc
@@ -127,21 +130,24 @@ module.exports = {
               id: 'complex',
               children: [],
             },
+            {
+              id: 'profanity',
+              children: [],
+            },
           ],
         }
       )
-
-    // const stats = {
-    //   uniqueWords: wordCount.common.length + wordCount.complex.length,
-    //   commonWords: wordCount.common.length,
-    //   complexWords: wordCount.complex.length,
-    // }
 
     const stats = [
       {
         id: 'common',
         label: 'Common',
         value: wordCount.children[0].children.length,
+      },
+      {
+        id: 'profanity',
+        label: 'Profanity',
+        value: wordCount.children[2].children.length,
       },
       {
         id: 'complex',

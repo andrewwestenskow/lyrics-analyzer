@@ -69,6 +69,7 @@ const Stats = props => {
             isInteractive={false}
             root={stats.wordCount.children[1]}
             colors={{ scheme: 'category10' }}
+            colorBy="name"
             leavesOnly={true}
             borderColor="black"
             borderWidth={3}
