@@ -9,7 +9,6 @@ import {
   Cell,
   Legend,
   Tooltip,
-  Treemap,
 } from 'recharts'
 import { regularTheme, largeSquareTheme, pieColors } from '../constants/themes'
 import { WordCountTooltip, wordCountLegend } from '../constants/labels'
@@ -19,6 +18,7 @@ const Stats = props => {
   console.log(stats)
   return (
     <div className="Stats">
+      <section className="stats-section"></section>
       <section className="stats-section">
         <h1 className="stats-section-header">Word Count</h1>
       </section>
@@ -76,7 +76,7 @@ const Stats = props => {
               motionDamping={15}
               theme={regularTheme}
               innerPadding={5}
-              innerPadding={5}
+              outerPadding={5}
             />
           </div>
         </div>
