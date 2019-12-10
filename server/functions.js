@@ -168,6 +168,17 @@ module.exports = {
 
     wordCount.children[1].children.splice(25, Infinity)
 
+    let colorCounter = 0
+
+    wordCount.children[1].children.forEach(element => {
+      element.colorPosition = colorCounter
+      if (colorCounter < 5) {
+        colorCounter++
+      } else {
+        colorCounter = 0
+      }
+    })
+
     const songStats = {
       phrases,
       wordCount,

@@ -1,3 +1,5 @@
+$label-height: 50px;
+
 .Stats {
   @include main-content-reset;
 }
@@ -76,4 +78,14 @@
       padding: 2px 0;
     }
   }
+}
+
+.responsive-pie-container {
+  height: calc(100% - #{$label-height});
+  width: 100%;
+}
+
+.responsive-treemap-wrapper {
+  height: calc(100% - #{$label-height});
+  width: 100%;
 }

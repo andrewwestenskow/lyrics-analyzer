@@ -1,5 +1,6 @@
 import React from 'react'
 import { common } from './data'
+import { pieColors } from './themes'
 
 export const WordCountTooltip = ({ active, payload, label }) => {
   if (payload[0]) {
@@ -42,4 +43,18 @@ export const WordCountTooltip = ({ active, payload, label }) => {
   }
 
   return null
+}
+
+export const wordCountLegend = stats => {
+  return stats.reduce((acc, element, index) => {
+    if (element.value) {
+      acc.push({
+        id: element.name,
+        type: 'square',
+        color: pieColors[index],
+        value: `${element.label} - ${element.value}`,
+      })
+    }
+    return acc
+  }, [])
 }

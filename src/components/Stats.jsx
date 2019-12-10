@@ -9,9 +9,10 @@ import {
   Cell,
   Legend,
   Tooltip,
+  Treemap,
 } from 'recharts'
 import { regularTheme, largeSquareTheme, pieColors } from '../constants/themes'
-import { WordCountTooltip } from '../constants/labels'
+import { WordCountTooltip, wordCountLegend } from '../constants/labels'
 
 const Stats = props => {
   const { stats } = props
@@ -24,8 +25,8 @@ const Stats = props => {
       <section className="stats-section">
         <div className="chart-hold">
           <p className="chart-label">Unique Word Count</p>
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
+          <ResponsiveContainer className="responsive-pie-container">
+            <PieChart className="word-count-pie">
               <Pie
                 stroke="none"
                 data={stats.totalUnique}
@@ -51,12 +52,7 @@ const Stats = props => {
               </Pie>
               <Tooltip content={<WordCountTooltip />} />
               <Legend
-                payload={stats.stats.map((element, index) => ({
-                  id: element.name,
-                  type: 'square',
-                  color: pieColors[index],
-                  value: `${element.label} - ${element.value}`,
-                }))}
+                payload={wordCountLegend(stats.stats)}
                 verticalAlign="bottom"
                 iconType="square"
               />
@@ -65,21 +61,24 @@ const Stats = props => {
         </div>
         <div className="large-chart-hold common-vs-complex-bar">
           <p className="chart-label">Complex words by appearance</p>
-          <ResponsiveTreeMap
-            isInteractive={false}
-            root={stats.wordCount.children[1]}
-            colors={{ scheme: 'category10' }}
-            colorBy="name"
-            leavesOnly={true}
-            borderColor="black"
-            borderWidth={3}
-            label={d => `${d.id} - ${d.value}`}
-            labelTextColor={{ from: 'color', modifiers: [['darker', '2']] }}
-            animate={true}
-            motionStiffness={90}
-            motionDamping={15}
-            theme={regularTheme}
-          />
+          <div className="responsive-treemap-wrapper">
+            <ResponsiveTreeMap
+              isInteractive={false}
+              root={stats.wordCount.children[1]}
+              colors={d => pieColors[d.colorPosition]}
+              leavesOnly={true}
+              borderColor="black"
+              borderWidth={3}
+              label={d => `${d.id} - ${d.value}`}
+              labelTextColor={{ from: 'color', modifiers: [['darker', '2']] }}
+              animate={true}
+              motionStiffness={90}
+              motionDamping={15}
+              theme={regularTheme}
+              innerPadding={5}
+              innerPadding={5}
+            />
+          </div>
         </div>
       </section>
       <section className="stats-section">
