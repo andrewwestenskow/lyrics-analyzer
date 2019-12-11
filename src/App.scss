@@ -3,6 +3,7 @@
 @import './components/Search';
 @import './components/Landing';
 @import './components/Stats';
+@import './components/SongInfo';
 
 * {
   @include spotify-scrollbar;

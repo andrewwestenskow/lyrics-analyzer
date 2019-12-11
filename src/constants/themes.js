@@ -28,10 +28,19 @@ export const largeTheme = {
 }
 
 export const pieColors = [
-  '#F66D44',
-  '#64C2A6',
-  '#FEAE65',
+  '#e6b89c',
+  '#d5e2bc',
+  '#d3c0d2',
   '#2D87BB',
-  '#AADEA7',
-  '#E6F69D',
+  '#d0ffd6',
+  '#a6979c',
+]
+
+export const treeColors = [
+  '#e6b89c',
+  '#D3C0D2',
+  '#A6979C',
+  '#D5E2BC',
+  '#D0FFd6',
+  '#DaFFef',
 ]

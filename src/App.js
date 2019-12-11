@@ -6,10 +6,21 @@ import './App.scss'
 
 function App() {
   const [stats, setStats] = useState({})
+  const [song, setSong] = useState({})
+  const [loading, setLoading] = useState(true)
   return (
     <div className="App">
-      <Search setStats={setStats} />
-      {stats.phrases ? <Stats stats={stats} /> : <Landing />}
+      <Search setSong={setSong} setStats={setStats} />
+      {stats.phrases ? (
+        <Stats
+          loading={loading}
+          setLoading={setLoading}
+          song={song}
+          stats={stats}
+        />
+      ) : (
+        <Landing />
+      )}
     </div>
   )
 }

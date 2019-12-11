@@ -3,14 +3,15 @@ import axios from 'axios'
 import { BounceLoader } from 'react-spinners'
 
 const SearchResults = props => {
-  const getLyrics = async url => {
+  const getLyrics = async song => {
     props.setResults([])
     const options = {
-      url: `/api/lyrics?url=${url}`,
+      url: `/api/lyrics?url=${song.url}`,
       method: 'GET',
     }
 
     const { data: stats } = await axios(options)
+    props.setSong(song)
     props.setStats(stats)
   }
 
@@ -18,7 +19,7 @@ const SearchResults = props => {
     const { result } = element
     return (
       <div
-        onClick={() => getLyrics(result.url)}
+        onClick={() => getLyrics(result)}
         className="result-hold"
         key={result.url}
       >

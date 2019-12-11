@@ -44,6 +44,7 @@ const Search = props => {
     <div className="Search">
       <SearchInput handleSearch={handleSearch} />
       <SearchResults
+        setSong={props.setSong}
         setStats={props.setStats}
         loadingSearch={loadingSearch}
         page={page}
