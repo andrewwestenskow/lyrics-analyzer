@@ -169,9 +169,11 @@ module.exports = {
     wordCount.children[1].children.splice(25, Infinity)
 
     let colorCounter = 0
+    const numList = ['one', 'two', 'three', 'four', 'five', 'six']
 
     wordCount.children[1].children.forEach(element => {
       element.colorPosition = colorCounter
+      element.colorCounter = numList[colorCounter]
       if (colorCounter < 5) {
         colorCounter++
       } else {

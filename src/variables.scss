@@ -50,3 +50,16 @@ $header-height: 100px;
     background: transparent;
   }
 }
+
+@mixin bottom-border {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    left: 15px;
+    bottom: -25px;
+    height: 1px;
+    width: 40%;
+    border-bottom: 1px solid black;
+  }
+}

@@ -1,0 +1,29 @@
+export const formatDef = colors => {
+  let colorCounter = 0
+  const numList = ['one', 'two', 'three', 'four', 'five', 'six']
+  const defs = []
+  for (let i = 0; i < 5; i++) {
+    defs.push({
+      id: numList[colorCounter],
+      type: 'linearGradient',
+      colors: [
+        { offset: 0, color: colors[colorCounter], opacity: 0.85 },
+        { offset: 100, color: colors[colorCounter], opacity: 0.85 },
+      ],
+    })
+    colorCounter++
+  }
+  return defs
+}
+
+export const formatFill = () => {
+  const numList = ['one', 'two', 'three', 'four', 'five', 'six']
+  const fillRules = []
+  for (let i = 0; i < 5; i++) {
+    fillRules.push({
+      match: d => d.data.colorCounter === numList[i],
+      id: numList[i],
+    })
+  }
+  return fillRules
+}

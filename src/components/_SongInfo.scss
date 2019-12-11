@@ -6,6 +6,7 @@
   padding: 15px;
   height: 100px;
   margin-bottom: 50px;
+  @include bottom-border;
   .song-title-image-hold {
     display: flex;
     justify-content: center;
