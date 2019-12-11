@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { ResponsiveBubble } from '@nivo/circle-packing'
-import { largeSquareTheme, pieColors } from '../constants/themes'
+import { pieColors } from '../constants/themes'
 import SongInfo from './SongInfo'
 import analyze from 'rgbaster'
 import UniqueWords from './Charts/UniqueWords'
@@ -22,7 +21,7 @@ const Stats = props => {
       .then(res => {
         const colors = res.map(element => {
           const split = element.color.split(/[,()]/)
-          const newColor = `rgba(${split[1]},${split[2]},${split[3]},0.85)`
+          const newColor = `rgba(${split[1]},${split[2]},${split[3]},0.65)`
           return newColor
         })
         if (colors.length > 5) {
@@ -65,16 +64,6 @@ const Stats = props => {
           <section className="stats-section">
             <div className="large-square-chart-hold">
               <p className="chart-label">Most common phrases</p>
-              <ResponsiveBubble
-                root={stats.phrases}
-                colors={{ scheme: 'nivo' }}
-                animate={true}
-                motionStiffness={90}
-                motionDamping={15}
-                theme={largeSquareTheme}
-                isInteractive={true}
-                isZoomable={true}
-              />
             </div>
           </section>
         </div>
