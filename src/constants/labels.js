@@ -30,11 +30,18 @@ export const WordCountTooltip = ({ active, payload, label }) => {
             </ul>
           </div>
         )
-      } else if ((info.label = 'Profanity')) {
+      } else if (info.label === 'Profanity') {
         return (
           <div className="custom-tooltip">
             <p className="data">{info.payload.value}</p>
             <p className="label">The total number of unique profanities used</p>
+          </div>
+        )
+      } else if (info.label === 'Pronouns') {
+        return (
+          <div className="custom-tooltip">
+            <p className="data">{info.payload.value}</p>
+            <p className="label">The total number of unique pronouns used</p>
           </div>
         )
       }
@@ -50,12 +57,15 @@ export const wordCountLegend = (stats, colors) => {
       let newIndex
       switch (index) {
         case 0:
-          newIndex = 1
+          newIndex = 0
           break
         case 1:
-          newIndex = 3
+          newIndex = 1
           break
         case 2:
+          newIndex = 3
+          break
+        case 3:
           newIndex = 5
           break
         default:

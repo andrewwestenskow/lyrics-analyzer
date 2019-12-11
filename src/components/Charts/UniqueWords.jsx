@@ -42,12 +42,15 @@ const UniqueWords = ({ stats, colorsArr }) => {
               let newIndex
               switch (index) {
                 case 0:
-                  newIndex = 1
+                  newIndex = 0
                   break
                 case 1:
-                  newIndex = 3
+                  newIndex = 1
                   break
                 case 2:
+                  newIndex = 3
+                  break
+                case 3:
                   newIndex = 5
                   break
                 default:

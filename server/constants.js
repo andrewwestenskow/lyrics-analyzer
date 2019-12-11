@@ -33,4 +33,5 @@ module.exports = {
     'motherfuck',
     'shit',
   ],
+  pronouns: ['i', 'me', 'you', 'he', 'she', 'we', 'they', 'us'],
 }

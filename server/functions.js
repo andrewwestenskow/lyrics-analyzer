@@ -1,4 +1,4 @@
-const { exclusions, commonWords, profanity } = require('./constants')
+const { exclusions, commonWords, profanity, pronouns } = require('./constants')
 
 module.exports = {
   analyze: lyrics => {
@@ -37,10 +37,7 @@ module.exports = {
                 acc.children[index2].children[index3].value++
               }
             } else {
-              acc.children[index2].children = [
-                { id: element, value: 1 },
-                { id: '', value: 1, color: `rgba(255,255,255, 0.0)` },
-              ]
+              acc.children[index2].children = [{ id: element, value: 1 }]
             }
           }
         } else {
@@ -114,6 +111,9 @@ module.exports = {
           } else if (profanity.includes(element.id)) {
             acc.children[2].children.push(element)
             return acc
+          } else if (pronouns.includes(element.id)) {
+            acc.children[3].children.push(element)
+            return acc
           } else {
             acc.children[1].children.push(element)
             return acc
@@ -132,6 +132,10 @@ module.exports = {
             },
             {
               id: 'profanity',
+              children: [],
+            },
+            {
+              id: 'pronouns',
               children: [],
             },
           ],
@@ -154,6 +158,11 @@ module.exports = {
         label: 'Complex',
         value: wordCount.children[1].children.length,
       },
+      {
+        id: 'pronouns',
+        label: 'Pronouns',
+        value: wordCount.children[3].children.length,
+      },
     ]
 
     const totalUnique = [
@@ -162,7 +171,9 @@ module.exports = {
         label: 'Total',
         value:
           wordCount.children[0].children.length +
-          wordCount.children[1].children.length,
+          wordCount.children[1].children.length +
+          wordCount.children[2].children.length +
+          wordCount.children[3].children.length,
       },
     ]
 
