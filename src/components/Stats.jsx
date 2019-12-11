@@ -5,12 +5,13 @@ import SongInfo from './SongInfo'
 import analyze from 'rgbaster'
 import UniqueWords from './Charts/UniqueWords'
 import WordsTree from './Charts/WordsTree'
+import getOppositeColor from '../functions/getOppositeColor'
 
 const Stats = props => {
   const { stats, song } = props
-  console.log(stats)
 
   const [colorsArr, setColorsArr] = useState([])
+  const [background, setBackground] = useState('')
   const setLoading = useCallback(props.setLoading, [stats, song])
 
   useEffect(() => {
@@ -26,12 +27,18 @@ const Stats = props => {
         })
         if (colors.length > 5) {
           setColorsArr(colors)
+          const opposite = getOppositeColor(colors[0])
+          setBackground(opposite)
         } else {
           setColorsArr(pieColors)
+          const opposite = getOppositeColor(pieColors[0])
+          setBackground(opposite)
         }
       })
       .catch(() => {
         setColorsArr(pieColors)
+        const opposite = getOppositeColor(pieColors[0])
+        setBackground(opposite)
       })
       .finally(() => {
         setLoading(false)
@@ -40,7 +47,7 @@ const Stats = props => {
   return (
     <>
       {!props.loading ? (
-        <div className="Stats">
+        <div style={{ background: background }} className="Stats">
           <SongInfo song={props.song} />
           <section className="stats-section">
             <h1 className="stats-section-header">Word Count</h1>
