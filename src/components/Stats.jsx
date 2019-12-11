@@ -15,8 +15,9 @@ const Stats = props => {
 
   useEffect(() => {
     const { song_art_image_thumbnail_url: image } = song
+    setLoading(true)
 
-    analyze(image, { scale: 0.02 })
+    analyze(image, { scale: 0.0135 })
       .then(res => {
         const colors = res.map(element => {
           const split = element.color.split(/[,()]/)

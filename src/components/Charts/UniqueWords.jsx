@@ -20,7 +20,7 @@ const UniqueWords = ({ stats, colorsArr }) => {
             stroke="none"
             data={stats.totalUnique}
             outerRadius="70%"
-            fill="#2D87BB"
+            fill={colorsArr[0]}
             startAngle={180}
             endAngle={540}
             dataKey="value"
@@ -39,7 +39,22 @@ const UniqueWords = ({ stats, colorsArr }) => {
             dataKey="value"
           >
             {stats.stats.map((element, index) => {
-              return <Cell key={index} fill={colorsArr[index]} />
+              let newIndex
+              switch (index) {
+                case 0:
+                  newIndex = 1
+                  break
+                case 1:
+                  newIndex = 3
+                  break
+                case 2:
+                  newIndex = 5
+                  break
+                default:
+                  newIndex = 0
+                  break
+              }
+              return <Cell key={index} fill={colorsArr[newIndex]} />
             })}
           </Pie>
           <Tooltip content={<WordCountTooltip />} />

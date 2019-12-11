@@ -47,10 +47,25 @@ export const WordCountTooltip = ({ active, payload, label }) => {
 export const wordCountLegend = (stats, colors) => {
   return stats.reduce((acc, element, index) => {
     if (element.value) {
+      let newIndex
+      switch (index) {
+        case 0:
+          newIndex = 1
+          break
+        case 1:
+          newIndex = 3
+          break
+        case 2:
+          newIndex = 5
+          break
+        default:
+          newIndex = 0
+          break
+      }
       acc.push({
         id: element.name,
         type: 'square',
-        color: colors[index],
+        color: colors[newIndex],
         value: `${element.label} - ${element.value}`,
       })
     }

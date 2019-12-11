@@ -14,10 +14,7 @@ const WordsTree = ({ stats, colorsArr }) => {
           colors={d => colorsArr[d.colorPosition]}
           leavesOnly={true}
           label={d => `${d.id} - ${d.value}`}
-          labelTextColor={{
-            from: 'color',
-            modifiers: [['darker', '2']],
-          }}
+          labelTextColor={'black'}
           animate={true}
           motionStiffness={90}
           motionDamping={15}
