@@ -28,10 +28,15 @@ const Stats = props => {
         })
         if (colors.length >= 6) {
           const excitingColors = getExcitingColors(res)
-          console.log(excitingColors)
-          setColorsArr(excitingColors)
-          const opposite = getOppositeColor(excitingColors[0])
-          setBackground(opposite)
+          if (excitingColors.length >= 6) {
+            setColorsArr(excitingColors)
+            const opposite = getOppositeColor(excitingColors[0])
+            setBackground(opposite)
+          } else {
+            setColorsArr(pieColors)
+            const opposite = getOppositeColor(pieColors[0])
+            setBackground(opposite)
+          }
         } else {
           setColorsArr(pieColors)
           const opposite = getOppositeColor(pieColors[0])
