@@ -28,7 +28,7 @@ module.exports = {
     }
   },
   getLyrics: async (req, res) => {
-    const { url } = req.query
+    const { url, id } = req.query
 
     try {
       request(url, (err, result, html) => {
@@ -39,7 +39,7 @@ module.exports = {
             .children()
             .first()
           newData.each(function(i, elem) {
-            console.log($(this).text())
+            // console.log($(this).text())
             newLyrics = $(this).text()
           })
 

@@ -4,7 +4,7 @@ const getOppositeColor = color => {
   const newColor = oldColor.map(element => {
     return ceiling - +element
   })
-  return `rgba(${newColor.join(',')},0.2)`
+  return `rgba(${newColor.join(',')},0.4)`
 }
 
 export default getOppositeColor

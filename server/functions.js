@@ -192,6 +192,16 @@ module.exports = {
       }
     })
 
+    wordCount.children[3].children.forEach(element => {
+      element.colorPosition = colorCounter
+      element.colorCounter = numList[colorCounter]
+      if (colorCounter < 5) {
+        colorCounter++
+      } else {
+        colorCounter = 0
+      }
+    })
+
     const songStats = {
       phrases,
       wordCount,

@@ -6,7 +6,7 @@ const SearchResults = props => {
   const getLyrics = async song => {
     props.setResults([])
     const options = {
-      url: `/api/lyrics?url=${song.url}`,
+      url: `/api/lyrics?url=${song.url}&id=${song.id}`,
       method: 'GET',
     }
 

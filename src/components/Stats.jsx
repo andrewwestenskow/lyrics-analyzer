@@ -4,7 +4,9 @@ import SongInfo from './SongInfo'
 import analyze from 'rgbaster'
 import UniqueWords from './Charts/UniqueWords'
 import WordsTree from './Charts/WordsTree'
+import PronounsTree from './Charts/PronounsTree'
 import getOppositeColor from '../functions/getOppositeColor'
+import getExcitingColors from '../functions/getExcitingColors'
 
 const Stats = props => {
   const { stats, song } = props
@@ -17,16 +19,18 @@ const Stats = props => {
     const { song_art_image_thumbnail_url: image } = song
     setLoading(true)
 
-    analyze(image, { scale: 0.0135 })
+    analyze(image, { scale: 1 })
       .then(res => {
         const colors = res.map(element => {
           const split = element.color.split(/[,()]/)
           const newColor = `rgba(${split[1]},${split[2]},${split[3]},0.65)`
           return newColor
         })
-        if (colors.length > 5) {
-          setColorsArr(colors)
-          const opposite = getOppositeColor(colors[0])
+        if (colors.length >= 6) {
+          const excitingColors = getExcitingColors(res)
+          console.log(excitingColors)
+          setColorsArr(excitingColors)
+          const opposite = getOppositeColor(excitingColors[0])
           setBackground(opposite)
         } else {
           setColorsArr(pieColors)
@@ -56,6 +60,10 @@ const Stats = props => {
             <WordsTree
               stats={stats.wordCount.children[1]}
               colorsArr={colorsArr}
+            />
+            <PronounsTree
+              colorsArr={colorsArr}
+              stats={stats.wordCount.children[3]}
             />
           </section>
           <section className="stats-section">
