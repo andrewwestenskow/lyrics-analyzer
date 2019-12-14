@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { pieColors } from '../constants/themes'
 import SongInfo from './SongInfo'
-import analyze from 'rgbaster'
 import UniqueWords from './Charts/UniqueWords'
 import WordsTree from './Charts/WordsTree'
 import PronounsTree from './Charts/PronounsTree'
-import getOppositeColor from '../functions/getOppositeColor'
-import getExcitingColors from '../functions/getExcitingColors'
+import useColors from '../hooks/useColors'
 
 const Stats = props => {
   const { stats, song } = props
@@ -14,44 +11,17 @@ const Stats = props => {
   const [colorsArr, setColorsArr] = useState([])
   const [background, setBackground] = useState('')
   const setLoading = useCallback(props.setLoading, [stats, song])
+  const { colorsArr: colors, background: newBackground } = useColors({
+    song,
+    stats,
+    setLoading,
+  })
 
   useEffect(() => {
-    const { song_art_image_thumbnail_url: image } = song
-    setLoading(true)
+    setColorsArr(colors)
+    setBackground(newBackground)
+  }, [song, stats, setLoading, colors, newBackground])
 
-    analyze(image, { scale: 1 })
-      .then(res => {
-        const colors = res.map(element => {
-          const split = element.color.split(/[,()]/)
-          const newColor = `rgba(${split[1]},${split[2]},${split[3]},0.65)`
-          return newColor
-        })
-        if (colors.length >= 6) {
-          const excitingColors = getExcitingColors(res)
-          if (excitingColors.length >= 6) {
-            setColorsArr(excitingColors)
-            const opposite = getOppositeColor(excitingColors[0])
-            setBackground(opposite)
-          } else {
-            setColorsArr(pieColors)
-            const opposite = getOppositeColor(pieColors[0])
-            setBackground(opposite)
-          }
-        } else {
-          setColorsArr(pieColors)
-          const opposite = getOppositeColor(pieColors[0])
-          setBackground(opposite)
-        }
-      })
-      .catch(() => {
-        setColorsArr(pieColors)
-        const opposite = getOppositeColor(pieColors[0])
-        setBackground(opposite)
-      })
-      .finally(() => {
-        setLoading(false)
-      })
-  }, [stats, song, setLoading])
   return (
     <>
       {!props.loading ? (
