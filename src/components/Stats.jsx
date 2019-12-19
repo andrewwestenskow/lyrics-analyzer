@@ -4,6 +4,7 @@ import UniqueWords from './Charts/UniqueWords'
 import WordsTree from './Charts/WordsTree'
 import PronounsTree from './Charts/PronounsTree'
 import TopPhrases from './Charts/TopPhrases'
+import PhrasesLegend from './Legends/PhrasesLegend'
 import useColors from '../hooks/useColors'
 
 const Stats = props => {
@@ -42,11 +43,16 @@ const Stats = props => {
               stats={stats.wordCount.children[3]}
             />
           </section>
-          <section className="stats-section">
+          <section className="stats-section  hook-hold">
             <h1 className="stats-section-header">Phrases</h1>
+            <div className="predicted-hook-hold">
+              <p className="predicted-hook">Predicted hook:</p>
+              <p className="actual-hook">{stats.phrases[0].phrase}</p>
+            </div>
           </section>
           <section className="stats-section">
             <TopPhrases stats={stats.phrases} colorsArr={colorsArr} />
+            <PhrasesLegend stats={stats.phrases} colorsArr={colorsArr} />
           </section>
         </div>
       ) : (

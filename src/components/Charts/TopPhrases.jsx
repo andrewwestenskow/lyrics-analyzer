@@ -31,8 +31,12 @@ const TopPhrases = ({ stats, colorsArr }) => {
           motionStiffness={90}
           motionDamping={15}
           borderColor={'#000000'}
+          margin={{ left: 60, top: 20, bottom: 20 }}
           borderWidth={1}
+          padding={0.3}
           tooltip={phrasesTooltip}
+          axisBottom={null}
+          colorBy="index"
         />
       </div>
     </div>
