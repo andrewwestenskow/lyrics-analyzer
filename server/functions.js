@@ -21,26 +21,42 @@ module.exports = {
 
     const phrases = filterArr
       .reduce((acc, element) => {
-        console.log(element)
         let match = false
         if (acc.length === 0) {
-          acc.push({ phrase: element, [element]: 1 })
+          acc.push({
+            phrase: element,
+            variation1Value: 1,
+            variation1: element,
+            variations: 1,
+          })
         } else {
           acc.forEach((phrase, index) => {
+            let subMatch = false
             if (
               phrase.phrase.includes(element) ||
               element.includes(phrase.phrase)
             ) {
-              if (acc[index].hasOwnProperty(element)) {
-                acc[index][element]++
-              } else {
-                acc[index][element] = 1
+              for (let key in phrase) {
+                if (phrase[key] === element && key !== 'phrase') {
+                  phrase[`${key}Value`]++
+                  subMatch = true
+                }
+              }
+              if (!subMatch) {
+                phrase[`variation${phrase.variations + 1}Value`] = 1
+                phrase[`variation${phrase.variations + 1}`] = element
+                phrase.variations++
               }
               match = true
             }
           })
           if (!match) {
-            acc.push({ phrase: element, [element]: 1 })
+            acc.push({
+              phrase: element,
+              variation1Value: 1,
+              variation1: element,
+              variations: 1,
+            })
           }
         }
 
@@ -63,6 +79,7 @@ module.exports = {
           return 0
         }
       })
+      .slice(0, 10)
 
     const wordCount = lyrics
       .split(/[\s,()]|,\s/)
