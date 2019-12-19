@@ -9,7 +9,6 @@ const PronounsTree = ({ stats, colorsArr }) => {
       <p className="chart-label">Pronouns by appearance</p>
       <div className="responsive-treemap-wrapper">
         <ResponsiveTreeMap
-          isInteractive={false}
           tile="slice"
           root={stats}
           colors={d => colorsArr[d.colorPosition]}

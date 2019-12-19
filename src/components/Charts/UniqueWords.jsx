@@ -4,11 +4,11 @@ import {
   PieChart,
   Pie,
   Label,
-  Cell,
   Legend,
   Tooltip,
 } from 'recharts'
 import { WordCountTooltip, wordCountLegend } from '../../constants/labels'
+import formatCells from './formatCells'
 
 const UniqueWords = ({ stats, colorsArr }) => {
   return (
@@ -38,27 +38,7 @@ const UniqueWords = ({ stats, colorsArr }) => {
             stroke="none"
             dataKey="value"
           >
-            {stats.stats.map((element, index) => {
-              let newIndex
-              switch (index) {
-                case 0:
-                  newIndex = 0
-                  break
-                case 1:
-                  newIndex = 1
-                  break
-                case 2:
-                  newIndex = 3
-                  break
-                case 3:
-                  newIndex = 5
-                  break
-                default:
-                  newIndex = 0
-                  break
-              }
-              return <Cell key={index} fill={colorsArr[newIndex]} />
-            })}
+            {formatCells(stats.stats, colorsArr)}
           </Pie>
           <Tooltip content={<WordCountTooltip />} />
           <Legend

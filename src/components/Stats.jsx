@@ -3,6 +3,7 @@ import SongInfo from './SongInfo'
 import UniqueWords from './Charts/UniqueWords'
 import WordsTree from './Charts/WordsTree'
 import PronounsTree from './Charts/PronounsTree'
+import TopPhrases from './Charts/TopPhrases'
 import useColors from '../hooks/useColors'
 
 const Stats = props => {
@@ -43,11 +44,7 @@ const Stats = props => {
           </section>
           <section className="stats-section">
             <h1 className="stats-section-header">Phrases</h1>
-          </section>
-          <section className="stats-section">
-            <div className="large-square-chart-hold">
-              <p className="chart-label">Most common phrases</p>
-            </div>
+            <TopPhrases stats={stats.phrases} colorsArr={colorsArr} />
           </section>
         </div>
       ) : (

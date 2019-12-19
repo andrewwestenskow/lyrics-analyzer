@@ -9,7 +9,6 @@ const WordsTree = ({ stats, colorsArr }) => {
       <p className="chart-label">Complex words by appearance</p>
       <div className="responsive-treemap-wrapper">
         <ResponsiveTreeMap
-          isInteractive={false}
           root={stats}
           colors={d => colorsArr[d.colorPosition]}
           leavesOnly={true}
