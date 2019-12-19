@@ -21,7 +21,7 @@ const WordsTree = ({ stats, colorsArr }) => {
           innerPadding={5}
           outerPadding={10}
           defs={formatDef(colorsArr)}
-          fill={formatFill()}
+          fill={formatFill('word')}
         />
       </div>
     </div>

@@ -16,14 +16,21 @@ export const formatDef = colors => {
   return defs
 }
 
-export const formatFill = () => {
+export const formatFill = type => {
   const numList = ['one', 'two', 'three', 'four', 'five', 'six']
   const fillRules = []
   for (let i = 0; i < 5; i++) {
-    fillRules.push({
-      match: d => d.data.colorCounter === numList[i],
-      id: numList[i],
-    })
+    if (type === 'word') {
+      fillRules.push({
+        match: d => d.data.colorCounter === numList[i],
+        id: numList[i],
+      })
+    } else if (type === 'phrase') {
+      fillRules.push({
+        match: d => d.data.data.colorCounter === numList[i],
+        id: numList[i],
+      })
+    }
   }
   return fillRules
 }

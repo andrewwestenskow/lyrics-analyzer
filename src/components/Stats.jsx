@@ -44,6 +44,8 @@ const Stats = props => {
           </section>
           <section className="stats-section">
             <h1 className="stats-section-header">Phrases</h1>
+          </section>
+          <section className="stats-section">
             <TopPhrases stats={stats.phrases} colorsArr={colorsArr} />
           </section>
         </div>

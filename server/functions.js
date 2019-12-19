@@ -209,6 +209,16 @@ module.exports = {
       }
     })
 
+    phrases.forEach(element => {
+      element.colorPosition = colorCounter
+      element.colorCounter = numList[colorCounter]
+      if (colorCounter < 5) {
+        colorCounter++
+      } else {
+        colorCounter = 0
+      }
+    })
+
     const songStats = {
       phrases,
       wordCount,
