@@ -2,32 +2,67 @@ const { exclusions, commonWords, profanity, pronouns } = require('./constants')
 
 module.exports = {
   analyze: lyrics => {
-    const lyricArr = lyrics.split(/[\n()]|,\s/)
+    const lyricArr = lyrics.split(/[\n()"!.]/)
 
     const filterArr = lyricArr
       .map(element => element.toLowerCase().trim())
       .filter(element => {
-        return !element.includes('[')
+        if (
+          element.includes(']') ||
+          element.includes('[') ||
+          element === '' ||
+          element === ' '
+        ) {
+          return false
+        } else {
+          return true
+        }
       })
 
-    const phrases = filterArr.reduce((acc, element) => {
-      if (acc.length === 0) {
-        acc.push({ phrase: element, [element]: 1 })
-      } else {
-        acc.forEach((phrase, index) => {
-          if (phrase.phrase.includes(element)) {
-            if (phrase.hasOwnProperty(element)) {
-              phrase[element]++
-            } else {
-              phrase[element] = 1
+    const phrases = filterArr
+      .reduce((acc, element) => {
+        console.log(element)
+        let match = false
+        if (acc.length === 0) {
+          acc.push({ phrase: element, [element]: 1 })
+        } else {
+          acc.forEach((phrase, index) => {
+            if (
+              phrase.phrase.includes(element) ||
+              element.includes(phrase.phrase)
+            ) {
+              if (acc[index].hasOwnProperty(element)) {
+                acc[index][element]++
+              } else {
+                acc[index][element] = 1
+              }
+              match = true
             }
-          } else {
-            console.log(element)
+          })
+          if (!match) {
+            acc.push({ phrase: element, [element]: 1 })
           }
-        })
-      }
-      return acc
-    }, [])
+        }
+
+        return acc
+      }, [])
+      .sort((a, b) => {
+        let sumA = 0
+        let sumB = 0
+        for (let key in a) {
+          if (typeof a[key] === 'number') sumA += a[key]
+        }
+        for (let key in b) {
+          if (typeof b[key] === 'number') sumB += b[key]
+        }
+        if (sumA < sumB) {
+          return 1
+        } else if (sumB < sumA) {
+          return -1
+        } else {
+          return 0
+        }
+      })
 
     const wordCount = lyrics
       .split(/[\s,()]|,\s/)
