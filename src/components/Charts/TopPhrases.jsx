@@ -3,6 +3,7 @@ import { ResponsiveBar } from '@nivo/bar'
 import { phraseKeys } from '../../constants/data'
 import { regularTheme } from '../../constants/themes'
 import { formatDef, formatFill } from '../../functions/formatFill'
+import { phrasesTooltip } from '../../constants/labels'
 
 const TopPhrases = ({ stats, colorsArr }) => {
   console.log(stats)
@@ -18,6 +19,20 @@ const TopPhrases = ({ stats, colorsArr }) => {
           keys={phraseKeys}
           data={stats}
           theme={regularTheme}
+          axisLeft={{
+            tickSize: 5,
+            tickPadding: 5,
+            tickRotation: 0,
+            legend: 'Appearances',
+            legendPosition: 'middle',
+            legendOffset: -40,
+          }}
+          animate={true}
+          motionStiffness={90}
+          motionDamping={15}
+          borderColor={'#000000'}
+          borderWidth={1}
+          tooltip={phrasesTooltip}
         />
       </div>
     </div>

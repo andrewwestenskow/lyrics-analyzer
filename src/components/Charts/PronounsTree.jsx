@@ -22,7 +22,7 @@ const PronounsTree = ({ stats, colorsArr }) => {
           innerPadding={5}
           outerPadding={10}
           defs={formatDef(colorsArr)}
-          fill={formatFill()}
+          fill={formatFill('word')}
           labelSkipSize={12}
         />
       </div>

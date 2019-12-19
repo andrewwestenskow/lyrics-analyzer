@@ -212,7 +212,7 @@ module.exports = {
     phrases.forEach(element => {
       element.colorPosition = colorCounter
       element.colorCounter = numList[colorCounter]
-      if (colorCounter < 5) {
+      if (colorCounter < 4) {
         colorCounter++
       } else {
         colorCounter = 0

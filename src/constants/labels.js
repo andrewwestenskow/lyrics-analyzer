@@ -82,3 +82,13 @@ export const wordCountLegend = (stats, colors) => {
     return acc
   }, [])
 }
+
+export function phrasesTooltip({ data, id }) {
+  const text = id.substr(0, id.indexOf('V'))
+  return (
+    <div style={{ background: data.fill }} className="phrases-tooltip">
+      <p className="phrases-tooltip-total">{data[id]}</p>
+      <p className="phrases-tooltip-data">{data[text]}</p>
+    </div>
+  )
+}

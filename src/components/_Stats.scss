@@ -89,3 +89,19 @@ $label-height: 50px;
   height: calc(100% - #{$label-height});
   width: 100%;
 }
+
+.phrases-tooltip {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  font-size: 1rem;
+  .phrases-tooltip-total {
+    font-weight: 700;
+    padding-bottom: 15px;
+  }
+
+  .phrases-tooltip-data {
+    &:first-letter {
+      text-transform: capitalize;
+    }
+  }
+}

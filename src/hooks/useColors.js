@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import analyze from 'rgbaster'
 import getExcitingColors from '../functions/getExcitingColors'
 import getOppositeColor from '../functions/getOppositeColor'
-import { pieColors } from '../constants/themes'
+import { pieColorsRgb } from '../constants/themes'
 
 const useColors = ({ song, setLoading, stats }) => {
   const [colorsArr, setColorsArr] = useState([])
@@ -23,7 +23,7 @@ const useColors = ({ song, setLoading, stats }) => {
           setColorsArr(colors)
           setBackground(getOppositeColor(colors[0]))
         } else {
-          const colors = pieColors.map(element => {
+          const colors = pieColorsRgb.map(element => {
             const split = element.split(/[,()]/)
             const newColor = `rgba(${split[1]},${split[2]},${split[3]},0.65)`
             return newColor
@@ -33,13 +33,13 @@ const useColors = ({ song, setLoading, stats }) => {
         }
       })
       .catch(() => {
-        const colors = pieColors.map(element => {
+        const colors = pieColorsRgb.map(element => {
           const split = element.split(/[,()]/)
           const newColor = `rgba(${split[1]},${split[2]},${split[3]},0.65)`
           return newColor
         })
         setColorsArr(colors)
-        setBackground(getOppositeColor(pieColors[0]))
+        setBackground(getOppositeColor(pieColorsRgb[0]))
       })
       .finally(() => {
         setLoading(false)

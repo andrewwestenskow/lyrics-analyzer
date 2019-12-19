@@ -22,6 +22,7 @@ const WordsTree = ({ stats, colorsArr }) => {
           outerPadding={10}
           defs={formatDef(colorsArr)}
           fill={formatFill('word')}
+          labelSkipSize={12}
         />
       </div>
     </div>

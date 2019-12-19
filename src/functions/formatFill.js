@@ -27,7 +27,10 @@ export const formatFill = type => {
       })
     } else if (type === 'phrase') {
       fillRules.push({
-        match: d => d.data.data.colorCounter === numList[i],
+        match: d => {
+          // console.log(d)
+          return d.data.data.colorCounter === numList[i]
+        },
         id: numList[i],
       })
     }

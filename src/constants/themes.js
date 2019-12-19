@@ -36,6 +36,15 @@ export const pieColors = [
   '#d5e2bc',
 ]
 
+export const pieColorsRgb = [
+  'rgb(230, 184, 156)',
+  'rgb(166, 151, 156)',
+  'rgb(211, 192, 210)',
+  'rgb(45, 135, 187)',
+  'rgb(208, 255, 214)',
+  'rgb(213, 226, 188)',
+]
+
 export const treeColors = [
   '#e6b89c',
   '#D3C0D2',
