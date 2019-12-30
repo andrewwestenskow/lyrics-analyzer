@@ -8,17 +8,13 @@
     "@nivo/core": "^0.60.0",
     "@nivo/pie": "^0.60.0",
     "@nivo/treemap": "^0.60.0",
-    "antd": "^3.26.5",
     "axios": "^0.19.0",
-    "babel-plugin-import": "^1.13.0",
     "cheerio": "^1.0.0-rc.3",
-    "customize-cra": "^0.9.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "node-sass": "^4.13.0",
     "puppeteer": "^2.0.0",
     "react": "^16.12.0",
-    "react-app-rewired": "^2.1.5",
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.0",
     "react-spinners": "^0.6.1",
@@ -27,10 +23,10 @@
     "rgbaster": "^2.1.1"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
