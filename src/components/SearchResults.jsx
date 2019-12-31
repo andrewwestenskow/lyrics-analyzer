@@ -1,20 +1,14 @@
 import React from 'react'
-import axios from 'axios'
 import { BounceLoader } from 'react-spinners'
 import { Drawer } from 'antd'
 import { drawerStyle } from '../constants/styles'
+import { withRouter } from 'react-router-dom'
 
 const SearchResults = props => {
   const getLyrics = async song => {
     props.setResults([])
-    const options = {
-      url: `/api/lyrics?url=${song.url}&id=${song.id}`,
-      method: 'GET',
-    }
 
-    const { data: stats } = await axios(options)
-    props.setSong(song)
-    props.setStats(stats)
+    props.history.push(`/lyrics?id=${song.id}`)
   }
 
   const results = props.results.map(element => {
@@ -78,4 +72,4 @@ const SearchResults = props => {
     </Drawer>
   )
 }
-export default SearchResults
+export default withRouter(SearchResults)

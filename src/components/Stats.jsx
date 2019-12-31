@@ -1,34 +1,17 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React from 'react'
 import SongInfo from './SongInfo'
 import UniqueWords from './Charts/UniqueWords'
 import WordsTree from './Charts/WordsTree'
 import PronounsTree from './Charts/PronounsTree'
 import TopPhrases from './Charts/TopPhrases'
 import PhrasesLegend from './Legends/PhrasesLegend'
-import useColors from '../hooks/useColors'
 
-const Stats = props => {
-  const { stats, song } = props
-
-  const [colorsArr, setColorsArr] = useState([])
-  const [background, setBackground] = useState('')
-  const setLoading = useCallback(props.setLoading, [stats, song])
-  const { colorsArr: colors, background: newBackground } = useColors({
-    song,
-    stats,
-    setLoading,
-  })
-
-  useEffect(() => {
-    setColorsArr(colors)
-    setBackground(newBackground)
-  }, [song, stats, setLoading, colors, newBackground])
-
+const Stats = ({ stats, song, colorsArr, background, loading }) => {
   return (
     <>
-      {!props.loading ? (
+      {!loading ? (
         <div style={{ background: background }} className="Stats">
-          <SongInfo song={props.song} />
+          <SongInfo song={song} />
           <section className="stats-section">
             <h1 className="stats-section-header">Word Count</h1>
           </section>

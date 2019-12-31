@@ -28,7 +28,21 @@ module.exports = {
     }
   },
   getLyrics: async (req, res) => {
-    const { url, id } = req.query
+    const { id } = req.query
+
+    const options = {
+      url: `https://api.genius.com/songs/${id}`,
+      method: 'GET',
+      headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+    }
+
+    const {
+      data: {
+        response: { song },
+      },
+    } = await axios(options)
+
+    const { url } = song
 
     try {
       request(url, (err, result, html) => {
@@ -45,7 +59,7 @@ module.exports = {
 
           const analysis = analyze(newLyrics)
 
-          res.status(200).send(analysis)
+          res.status(200).send({ stats: analysis, song })
         }
       })
     } catch (error) {

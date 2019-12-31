@@ -7,6 +7,7 @@ import { pieColorsRgb } from '../constants/themes'
 const useColors = ({ song, setLoading, stats }) => {
   const [colorsArr, setColorsArr] = useState([])
   const [background, setBackground] = useState('')
+
   useEffect(() => {
     const { song_art_image_thumbnail_url: image } = song
     setLoading(true)
@@ -42,7 +43,9 @@ const useColors = ({ song, setLoading, stats }) => {
         setBackground(getOppositeColor(pieColorsRgb[0]))
       })
       .finally(() => {
-        setLoading(false)
+        if (stats.wordCount) {
+          setLoading(false)
+        }
       })
   }, [stats, song, setLoading])
   return { background, colorsArr }
