@@ -6,8 +6,6 @@ import { formatDef, formatFill } from '../../functions/formatFill'
 import { phrasesTooltip } from '../../constants/labels'
 
 const TopPhrases = ({ stats, colorsArr }) => {
-  console.log(stats)
-
   return (
     <div className="large-chart-hold">
       <p className="chart-label">Phrases</p>

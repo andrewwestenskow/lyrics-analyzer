@@ -1,26 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Search from './components/Search'
 import Landing from './components/Landing'
-import Stats from './components/Stats'
+import Display from './components/Display'
+import { Route } from 'react-router-dom'
 import './App.scss'
 
 function App() {
-  const [stats, setStats] = useState({})
-  const [song, setSong] = useState({})
-  const [loading, setLoading] = useState(true)
   return (
     <div className="App">
-      <Search loading={loading} setSong={setSong} setStats={setStats} />
-      {stats.phrases ? (
-        <Stats
-          loading={loading}
-          setLoading={setLoading}
-          song={song}
-          stats={stats}
-        />
-      ) : (
-        <Landing />
-      )}
+      <Search />
+      <Route exact path="/" component={Landing} />
+      <Route path="/lyrics" component={Display} />
     </div>
   )
 }
