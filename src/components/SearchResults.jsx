@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import { BounceLoader } from 'react-spinners'
+import { Drawer } from 'antd'
+import { drawerStyle } from '../constants/styles'
 
 const SearchResults = props => {
   const getLyrics = async song => {
@@ -36,7 +38,15 @@ const SearchResults = props => {
     )
   })
   return (
-    <div className="Search-Results">
+    <Drawer
+      title="Results"
+      placement="top"
+      visible={props.loadingSearch || !!props.results.length}
+      bodyStyle={drawerStyle}
+      zIndex={99}
+      closable={false}
+      maskClosable={false}
+    >
       {results}
       {props.results.length > 0 ? (
         <div className="results-page-control">
@@ -65,7 +75,7 @@ const SearchResults = props => {
           </div>
         )
       )}
-    </div>
+    </Drawer>
   )
 }
 export default SearchResults

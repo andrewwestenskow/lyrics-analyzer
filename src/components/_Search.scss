@@ -6,88 +6,92 @@
   position: fixed;
   z-index: 99;
   top: 0;
-  .Search-Results {
-    position: absolute;
-    z-index: 99;
-    top: $header-height;
-    width: 100%;
+}
+.search-form {
+  display: flex;
+  .search-button {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    color: white;
-    background-image: linear-gradient(
-      to bottom,
-      rgb(25, 25, 25) 25%,
-      rgba(25, 25, 25, 0.8)
-    );
-    .loading {
-      width: 50%;
-      height: 250px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      .loading-text {
-        color: white;
-        font-size: 1.4rem;
-      }
-    }
-    .result-hold {
-      width: 25%;
-      height: 100px;
-      display: flex;
-      align-items: center;
-      padding: 10px;
-      &:hover {
-        background: black;
-        color: white;
-        cursor: pointer;
-      }
-      .result-image {
-        height: 100%;
-        min-width: 80px;
-        max-width: 80px;
-      }
-      .result-text-hold {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        padding: 5px;
-        justify-content: center;
-        .result-hold-title {
-          font-size: 1.4rem;
-          font-weight: 700;
-        }
-        .result-hold-artist {
-          font-size: 1.2rem;
-        }
-      }
-    }
+    padding: 10px;
+  }
+}
 
-    .results-page-control {
-      width: 100%;
-      padding: 0 15%;
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: space-between;
-      margin-bottom: 10px;
-      .page-button {
-        border: 1px solid white;
-        padding: 5px;
-        cursor: pointer;
-        &:hover {
-          background: black;
-          color: white;
-        }
-      }
+.loading {
+  width: 50%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .loading-text {
+    color: white;
+    font-size: 1.4rem;
+  }
+}
+
+.results-page-control {
+  width: 100%;
+  padding: 0 15%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  .page-button {
+    border: 1px solid white;
+    padding: 5px;
+    cursor: pointer;
+    &:hover {
+      background: black;
+      color: white;
     }
   }
-  .search-form {
-    display: flex;
-    .search-button {
-      display: flex;
-      padding: 10px;
-    }
+}
+
+.Search-Results {
+  position: absolute;
+  z-index: 99;
+  top: $header-height;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  color: white;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(25, 25, 25) 25%,
+    rgba(25, 25, 25, 0.8)
+  );
+}
+
+.result-hold {
+  width: 25%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  &:hover {
+    background: black;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.result-image {
+  height: 100%;
+  min-width: 80px;
+  max-width: 80px;
+}
+.result-text-hold {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  justify-content: center;
+  .result-hold-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+  .result-hold-artist {
+    font-size: 1.2rem;
   }
 }

@@ -12,7 +12,7 @@ const SearchInput = props => {
   }
   return (
     <Search
-      placeholder="input search text"
+      placeholder="Search for a song"
       enterButton="Search"
       size="large"
       value={search}

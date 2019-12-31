@@ -4,8 +4,6 @@ const {
   addWebpackModuleRule,
 } = require('customize-cra')
 
-const path = require('path')
-
 const AntdScssThemePlugin = require('antd-scss-theme-plugin')
 
 const addLoader = config => {
