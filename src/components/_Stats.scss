@@ -4,12 +4,17 @@ $label-height: 50px;
   @include main-content-reset;
 }
 
+.small-card {
+  height: 25vw;
+  width: 25vw;
+}
+
 .chart-hold {
   height: 25vw;
   width: 25vw;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  // padding: 10px;
   justify-content: center;
   align-items: center;
   div {
@@ -25,7 +30,12 @@ $label-height: 50px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  // padding: 10px;
+}
+
+.half-chart-hold {
+  height: 25vw;
+  width: 45vw;
 }
 
 .large-square-chart-hold {
@@ -45,6 +55,7 @@ $label-height: 50px;
   width: 100%;
   display: flex;
   margin-bottom: 50px;
+  justify-content: space-evenly;
   .stats-section-header {
     width: 100%;
     display: flex;

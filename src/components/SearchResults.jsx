@@ -41,7 +41,7 @@ const SearchResults = props => {
       closable={true}
       maskClosable={true}
       onClose={() => props.setResults([])}
-      height={600 + (props.results.length === 20 ? 50 : 0)}
+      height={600 + (props.results.length === 20 || props.page !== 0 ? 50 : 0)}
       drawerStyle={outerDrawerStyle}
     >
       {results}
