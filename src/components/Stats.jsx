@@ -1,5 +1,6 @@
 import React from 'react'
 import SongInfo from './SongInfo'
+import InfoTable from './Tables/InfoTable'
 import UniqueWords from './Charts/UniqueWords'
 import WordsTree from './Charts/WordsTree'
 import PronounsTree from './Charts/PronounsTree'
@@ -15,6 +16,7 @@ const Stats = ({ stats, song, colorsArr, background, loading }) => {
           <h1 className="stats-section-header">Word Count</h1>
         </section>
         <section className="stats-section">
+          <InfoTable loading={loading} song={song} />
           <UniqueWords loading={loading} stats={stats} colorsArr={colorsArr} />
         </section>
         <section className="stats-section">

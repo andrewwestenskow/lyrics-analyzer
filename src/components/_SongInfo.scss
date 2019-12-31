@@ -13,6 +13,9 @@
     align-items: center;
     .song-image {
       height: 100px;
+      @media screen and (max-width: $big-break) {
+        display: none;
+      }
     }
     .song-text-hold {
       display: flex;
@@ -28,5 +31,8 @@
         font-size: 1.2rem;
       }
     }
+  }
+  @media screen and (max-width: $big-break) {
+    margin-bottom: 75px;
   }
 }
