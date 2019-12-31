@@ -1,24 +1,26 @@
 import React, { useState } from 'react'
+import { Input } from 'antd'
+
+const { Search } = Input
 
 const SearchInput = props => {
   const [search, setSearch] = useState('')
 
   const handleSearch = e => {
-    e.preventDefault()
-    props.handleSearch(search)
+    props.handleSearch(e)
     setSearch('')
   }
   return (
-    <form className="search-form" onSubmit={handleSearch}>
-      <input
-        value={search}
-        onChange={e => setSearch(e.target.value)}
-        type="text"
-      />
-      <button className="search-button" type="submit">
-        Search
-      </button>
-    </form>
+    <Search
+      placeholder="input search text"
+      enterButton="Search"
+      size="large"
+      value={search}
+      loading={props.loading}
+      onChange={e => setSearch(e.target.value)}
+      onSearch={value => handleSearch(value)}
+      style={{ maxWidth: '500px' }}
+    />
   )
 }
 export default SearchInput

@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import SearchResults from './SearchResults'
 import SearchInput from './SearchInput'
-import { Button } from 'antd'
 
 const Search = props => {
   const [term, setTerm] = useState('')
@@ -43,8 +42,7 @@ const Search = props => {
   }
   return (
     <div className="Search">
-      <SearchInput handleSearch={handleSearch} />
-      <Button>Hello</Button>
+      <SearchInput loading={loadingSearch} handleSearch={handleSearch} />
       <SearchResults
         setSong={props.setSong}
         setStats={props.setStats}

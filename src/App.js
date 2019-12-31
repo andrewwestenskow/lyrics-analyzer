@@ -10,7 +10,7 @@ function App() {
   const [loading, setLoading] = useState(true)
   return (
     <div className="App">
-      <Search setSong={setSong} setStats={setStats} />
+      <Search loading={loading} setSong={setSong} setStats={setStats} />
       {stats.phrases ? (
         <Stats
           loading={loading}
