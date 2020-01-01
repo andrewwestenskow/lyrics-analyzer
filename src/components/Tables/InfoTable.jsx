@@ -10,14 +10,14 @@
 import React from 'react'
 import { Descriptions, Card } from 'antd'
 
-const InfoTable = ({ song, loading }) => {
-  console.log(song)
+const InfoTable = ({ song, loading, stats }) => {
+  console.log(stats)
   const { title, primary_artist, album, release_date, writer_artists } = song
   return loading ? (
     <Card title="Loading Stats" loading={loading}></Card>
   ) : (
-    <div className="chart-hold">
-      <Card bodyStyle={{ padding: 0 }}>
+    <Card bodyStyle={{ padding: 0 }}>
+      <div className="chart-hold">
         <Descriptions column={1} bordered>
           <Descriptions.Item label="Title">{title}</Descriptions.Item>
           <Descriptions.Item label="Artist">
@@ -29,8 +29,8 @@ const InfoTable = ({ song, loading }) => {
             {writer_artists.length}
           </Descriptions.Item>
         </Descriptions>
-      </Card>
-    </div>
+      </div>
+    </Card>
   )
 }
 export default InfoTable
