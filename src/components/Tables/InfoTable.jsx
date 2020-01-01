@@ -28,6 +28,21 @@ const InfoTable = ({ song, loading, stats }) => {
           <Descriptions.Item label="# Writers">
             {writer_artists.length}
           </Descriptions.Item>
+          <Descriptions.Item label="Unique Words">
+            {stats.totalUnique[0].value}
+          </Descriptions.Item>
+          <Descriptions.Item label="Predicted Hook">
+            {stats.phrases[0].phrase}
+          </Descriptions.Item>
+          <Descriptions.Item label="Predicted Hook">
+            {stats.phrases[0].phrase}
+          </Descriptions.Item>
+          <Descriptions.Item label="Predicted Hook">
+            {stats.phrases[0].phrase}
+          </Descriptions.Item>
+          <Descriptions.Item label="Predicted Hook">
+            {stats.phrases[0].phrase}
+          </Descriptions.Item>
         </Descriptions>
       </div>
     </Card>

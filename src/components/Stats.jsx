@@ -16,7 +16,7 @@ const Stats = ({ stats, song, colorsArr, background, loading }) => {
           <h1 className="stats-section-header">Word Count</h1>
         </section>
         <section className="stats-section">
-          <InfoTable loading={loading} song={song} />
+          <InfoTable loading={loading} song={song} stats={stats} />
           <UniqueWords loading={loading} stats={stats} colorsArr={colorsArr} />
         </section>
         <section className="stats-section">
