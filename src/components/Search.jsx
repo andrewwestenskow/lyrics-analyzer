@@ -36,6 +36,7 @@ const Search = props => {
   }
 
   const searchNewPage = newPage => {
+    setLoadingSearch(true)
     handleSearch(term, newPage).then(() => {
       setPage(newPage)
     })

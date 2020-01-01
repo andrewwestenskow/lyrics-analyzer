@@ -1,7 +1,7 @@
 import React from 'react'
 import { BounceLoader } from 'react-spinners'
 import { Drawer } from 'antd'
-import { drawerStyle } from '../constants/styles'
+import { drawerBodyStyle, outerDrawerStyle } from '../constants/styles'
 import { withRouter } from 'react-router-dom'
 
 const SearchResults = props => {
@@ -33,13 +33,16 @@ const SearchResults = props => {
   })
   return (
     <Drawer
-      title="Results"
+      title={'Results'}
       placement="top"
       visible={props.loadingSearch || !!props.results.length}
-      bodyStyle={drawerStyle}
+      bodyStyle={drawerBodyStyle}
       zIndex={99}
-      closable={false}
-      maskClosable={false}
+      closable={true}
+      maskClosable={true}
+      onClose={() => props.setResults([])}
+      height={600 + (props.results.length === 20 || props.page !== 0 ? 50 : 0)}
+      drawerStyle={outerDrawerStyle}
     >
       {results}
       {props.results.length > 0 ? (

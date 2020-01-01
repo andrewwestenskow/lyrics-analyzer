@@ -13,6 +13,7 @@
     "axios": "^0.19.0",
     "babel-plugin-import": "^1.13.0",
     "cheerio": "^1.0.0-rc.3",
+    "concurrently": "^5.0.2",
     "css": "^2.2.4",
     "customize-cra": "^0.9.1",
     "dotenv": "^8.2.0",
@@ -35,7 +36,7 @@
     "style-loader": "^1.1.2"
   },
   "scripts": {
-    "start": "react-app-rewired start",
+    "start": "concurrently \"nodemon\" \"react-app-rewired start\"",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
