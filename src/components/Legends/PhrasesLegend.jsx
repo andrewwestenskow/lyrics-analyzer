@@ -9,7 +9,7 @@ const PhrasesLegend = ({ stats, colorsArr, loading, isDesktop }) => {
     <Card
       bodyStyle={halfTableHold(isDesktop)}
       className="card-container"
-      title="Phrase Data"
+      title={loading && 'Phrase Data'}
       loading={loading}
     >
       <Table
@@ -17,7 +17,7 @@ const PhrasesLegend = ({ stats, colorsArr, loading, isDesktop }) => {
         columns={columns}
         dataSource={stats}
         loading={loading}
-        size="small"
+        size="default"
         pagination={false}
       />
     </Card>
