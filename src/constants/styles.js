@@ -14,3 +14,13 @@ export const outerDrawerStyle = {
     rgba(25, 25, 25, 0.8)
   )`,
 }
+
+export const smallTableHold = isDesktop => {
+  console.log(isDesktop)
+  return {
+    padding: 0,
+    minHeight: isDesktop ? '25vw' : '50vw',
+    width: isDesktop && '25vw',
+    margin: 0,
+  }
+}

@@ -21,13 +21,16 @@ $label-height: 50px;
     position: relative;
     z-index: 0;
   }
-  .ant-descriptions {
-    width: 100%;
-    height: 100%;
-  }
+
   @media screen and (max-width: $big-break) {
     height: 50vh;
     width: 80vw;
+  }
+}
+
+.small-card-container {
+  @media screen and (max-width: $big-break) {
+    margin-bottom: 50px;
   }
 }
 

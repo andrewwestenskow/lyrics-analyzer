@@ -34,5 +34,8 @@
   }
   @media screen and (max-width: $big-break) {
     margin-bottom: 75px;
+    &:after {
+      border-bottom: none;
+    }
   }
 }

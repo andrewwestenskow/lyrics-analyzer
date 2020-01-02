@@ -219,12 +219,36 @@ module.exports = {
       }
     })
 
+    const formattedPhraseData = phrases.reduce((acc, element, index) => {
+      let appearances = 0
+      for (let key in element) {
+        if (
+          typeof element[key] === 'number' &&
+          key !== 'variations' &&
+          key !== 'colorPosition'
+        ) {
+          appearances += element[key]
+        }
+      }
+      const newData = {
+        phrase:
+          element.phrase.charAt(0).toUpperCase() + element.phrase.slice(1),
+        id: index,
+        key: index,
+        appearances,
+        variations: element.variations,
+      }
+      acc.push(newData)
+      return acc
+    }, [])
+
     const songStats = {
       phrases,
       wordCount,
       stats,
       totalUnique,
       commonWords,
+      formattedPhraseData,
     }
 
     return songStats

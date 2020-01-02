@@ -13,9 +13,6 @@ const Stats = ({ stats, song, colorsArr, background, loading }) => {
       <div style={{ background: background }} className="Stats">
         <SongInfo song={song} />
         <section className="stats-section">
-          <h1 className="stats-section-header">Word Count</h1>
-        </section>
-        <section className="stats-section">
           <InfoTable loading={loading} song={song} stats={stats} />
           <UniqueWords loading={loading} stats={stats} colorsArr={colorsArr} />
         </section>
@@ -48,7 +45,7 @@ const Stats = ({ stats, song, colorsArr, background, loading }) => {
           />
           <PhrasesLegend
             loading={loading}
-            stats={stats.phrases}
+            stats={stats.formattedPhraseData}
             colorsArr={colorsArr}
           />
         </section>
