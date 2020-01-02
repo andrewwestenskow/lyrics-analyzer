@@ -1,0 +1,11 @@
+@import './theme.scss';
+@import './reset.css';
+@import './variables.scss';
+@import '../components/Search';
+@import '../components/Landing';
+@import '../components/Stats';
+@import '../components/SongInfo';
+
+* {
+  @include spotify-scrollbar;
+}

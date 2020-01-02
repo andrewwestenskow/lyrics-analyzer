@@ -3,7 +3,7 @@ import Search from './components/Search'
 import Landing from './components/Landing'
 import Display from './components/Display'
 import { Route } from 'react-router-dom'
-import './App.scss'
+import './styles/App.scss'
 
 function App() {
   return (
