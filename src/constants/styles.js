@@ -16,11 +16,40 @@ export const outerDrawerStyle = {
 }
 
 export const smallTableHold = isDesktop => {
-  console.log(isDesktop)
   return {
     padding: 0,
     minHeight: isDesktop ? '25vw' : '50vw',
     width: isDesktop && '25vw',
+    margin: 0,
+  }
+}
+
+export const smallChartHold = isDesktop => {
+  return {
+    height: isDesktop ? '25vw' : '50vh',
+    width: isDesktop && '25vw',
+  }
+}
+
+export const largeChartHold = isDesktop => {
+  return {
+    height: isDesktop ? '25vw' : '50vh',
+    width: isDesktop && '50vw',
+  }
+}
+
+export const halfChartHold = isDesktop => {
+  return {
+    height: isDesktop ? '25vw' : '50vh',
+    width: isDesktop && '45vw',
+  }
+}
+
+export const halfTableHold = isDesktop => {
+  return {
+    padding: 0,
+    minHeight: isDesktop ? '25vw' : '50vw',
+    width: isDesktop && '45vw',
     margin: 0,
   }
 }

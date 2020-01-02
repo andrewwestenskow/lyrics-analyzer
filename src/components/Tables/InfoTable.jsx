@@ -1,21 +1,18 @@
 import React from 'react'
 import { Descriptions, Card } from 'antd'
 import { smallTableHold } from '../../constants/styles'
-import useMediaQuery from '../../hooks/useMediaQuery'
-import { bigBreak } from '../../constants/breakPoints'
 
-const InfoTable = ({ song, loading, stats }) => {
+const InfoTable = ({ song, loading, stats, isDesktop }) => {
   const { title, primary_artist, album, release_date, writer_artists } = song
 
-  const isDesktop = useMediaQuery(bigBreak)
-
   return loading ? (
-    <Card title="Loading Stats" loading={loading}></Card>
-  ) : (
     <Card
-      className="small-card-container"
       bodyStyle={smallTableHold(isDesktop)}
-    >
+      title="Loading Stats"
+      loading={loading}
+    ></Card>
+  ) : (
+    <Card className="card-container" bodyStyle={smallTableHold(isDesktop)}>
       <Descriptions column={1} bordered>
         <Descriptions.Item label="Title">{title}</Descriptions.Item>
         <Descriptions.Item label="Artist">

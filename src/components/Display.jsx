@@ -3,6 +3,8 @@ import Stats from './Stats'
 import axios from 'axios'
 import queryString from 'query-string'
 import useColors from '../hooks/useColors'
+import useMediaQuery from '../hooks/useMediaQuery'
+import { bigBreak } from '../constants/breakPoints'
 
 const Display = ({ location }) => {
   const [song, setSong] = useState({})
@@ -10,6 +12,7 @@ const Display = ({ location }) => {
   const [loading, setLoading] = useState(true)
   const [colorsArr, setColorsArr] = useState([])
   const [background, setBackground] = useState('')
+  const isDesktop = useMediaQuery(bigBreak)
 
   const getLyrics = async id => {
     const options = {
@@ -49,6 +52,7 @@ const Display = ({ location }) => {
       background={background}
       song={song}
       stats={stats}
+      isDesktop={isDesktop}
     />
   )
 }

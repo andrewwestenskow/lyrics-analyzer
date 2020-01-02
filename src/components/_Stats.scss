@@ -4,77 +4,16 @@ $label-height: 50px;
   @include main-content-reset;
 }
 
-.small-card {
-  height: 25vw;
-  width: 25vw;
-}
-
-.chart-hold {
-  height: 25vw;
-  width: 25vw;
-  display: flex;
-  flex-direction: column;
-  // padding: 10px;
-  justify-content: center;
-  align-items: center;
-  div {
-    position: relative;
-    z-index: 0;
-  }
-
-  @media screen and (max-width: $big-break) {
-    height: 50vh;
-    width: 80vw;
-  }
-}
-
-.small-card-container {
+.card-container {
   @media screen and (max-width: $big-break) {
     margin-bottom: 50px;
   }
-}
-
-.large-chart-hold {
-  height: 25vw;
-  width: 50vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  // padding: 10px;
-  @media screen and (max-width: $big-break) {
-    height: 50vh;
-    width: 80vw;
-  }
-}
-
-.half-chart-hold {
-  height: 25vw;
-  width: 45vw;
-  @media screen and (max-width: $big-break) {
-    height: 50vh;
-    width: 80vw;
-  }
-}
-
-.large-square-chart-hold {
-  height: 33vw;
-  width: 33vw;
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-}
-
-.chart-label {
-  padding: 15px;
-  font-size: 1.4rem;
-  text-align: center;
 }
 .stats-section {
   width: 100%;
   display: flex;
   margin-bottom: 50px;
-  justify-content: space-evenly;
+  justify-content: space-around;
   @media screen and (max-width: $big-break) {
     flex-direction: column;
   }
@@ -113,13 +52,8 @@ $label-height: 50px;
   }
 }
 
-.responsive-pie-container {
-  height: calc(100% - #{$label-height});
-  width: 100%;
-}
-
-.responsive-treemap-wrapper {
-  height: calc(100% - #{$label-height});
+.responsive-chart-wrapper {
+  height: 100%;
   width: 100%;
 }
 

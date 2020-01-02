@@ -7,22 +7,34 @@ import PronounsTree from './Charts/PronounsTree'
 import TopPhrases from './Charts/TopPhrases'
 import PhrasesLegend from './Legends/PhrasesLegend'
 
-const Stats = ({ stats, song, colorsArr, background, loading }) => {
+const Stats = ({ stats, song, colorsArr, background, loading, isDesktop }) => {
   return (
     <>
       <div style={{ background: background }} className="Stats">
         <SongInfo song={song} />
         <section className="stats-section">
-          <InfoTable loading={loading} song={song} stats={stats} />
-          <UniqueWords loading={loading} stats={stats} colorsArr={colorsArr} />
+          <InfoTable
+            isDesktop={isDesktop}
+            loading={loading}
+            song={song}
+            stats={stats}
+          />
+          <UniqueWords
+            isDesktop={isDesktop}
+            loading={loading}
+            stats={stats}
+            colorsArr={colorsArr}
+          />
         </section>
         <section className="stats-section">
           <WordsTree
+            isDesktop={isDesktop}
             loading={loading}
             stats={loading ? {} : stats.wordCount.children[1]}
             colorsArr={colorsArr}
           />
           <PronounsTree
+            isDesktop={isDesktop}
             loading={loading}
             colorsArr={colorsArr}
             stats={loading ? {} : stats.wordCount.children[3]}
@@ -39,11 +51,13 @@ const Stats = ({ stats, song, colorsArr, background, loading }) => {
         </section>
         <section className="stats-section">
           <TopPhrases
+            isDesktop={isDesktop}
             loading={loading}
             stats={stats.phrases}
             colorsArr={colorsArr}
           />
           <PhrasesLegend
+            isDesktop={isDesktop}
             loading={loading}
             stats={stats.formattedPhraseData}
             colorsArr={colorsArr}
