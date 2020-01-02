@@ -1,10 +1,9 @@
 import React from 'react'
 import { Card, Table } from 'antd'
-import { columns } from '../../functions/formatPhraseData'
+import { columns, expandedRowRender } from '../../functions/formatPhraseData'
 import { halfTableHold } from '../../constants/styles'
 
-const PhrasesLegend = ({ stats, colorsArr, loading, isDesktop }) => {
-  console.log(stats)
+const PhrasesLegend = ({ stats, sub, colorsArr, loading, isDesktop }) => {
   return (
     <Card
       bodyStyle={halfTableHold(isDesktop)}

@@ -17,13 +17,16 @@ export const columns = [
     dataIndex: 'variations',
     key: 'variations',
   },
+  {
+    title: 'Details',
+    dataIndex: 'operation',
+    key: 'operation',
+    render: () => {
+      return (
+        <span>
+          <a onClick={console.log('thing')}>View Details</a>
+        </span>
+      )
+    },
+  },
 ]
-
-export const expandedRowRender = data => {
-  const columns = [
-    { title: 'Variation', dataIndex: 'variation', key: 'variation' },
-    { title: 'Appearances', dataIndex: 'variations', key: 'variations' },
-  ]
-
-  return <Table columns={columns} data={data} pagination={false} />
-}

@@ -41,6 +41,7 @@ export const largeChartHold = isDesktop => {
 export const halfChartHold = isDesktop => {
   return {
     height: isDesktop ? '25vw' : '50vh',
+    maxHeight: isDesktop ? '25vw' : '50vh',
     width: isDesktop && '45vw',
   }
 }

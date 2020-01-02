@@ -59,7 +59,8 @@ const Stats = ({ stats, song, colorsArr, background, loading, isDesktop }) => {
           <PhrasesLegend
             isDesktop={isDesktop}
             loading={loading}
-            stats={stats.formattedPhraseData}
+            stats={stats.formattedData}
+            sub={stats.subData}
             colorsArr={colorsArr}
           />
         </section>
