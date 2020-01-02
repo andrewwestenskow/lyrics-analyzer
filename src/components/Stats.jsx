@@ -30,14 +30,14 @@ const Stats = ({ stats, song, colorsArr, background, loading, isDesktop }) => {
           <WordsTree
             isDesktop={isDesktop}
             loading={loading}
-            stats={loading ? {} : stats.wordCount.children[1]}
+            stats={loading ? {} : stats.wordCount.children.complex}
             colorsArr={colorsArr}
           />
           <PronounsTree
             isDesktop={isDesktop}
             loading={loading}
             colorsArr={colorsArr}
-            stats={loading ? {} : stats.wordCount.children[3]}
+            stats={loading ? {} : stats.wordCount.children.pronouns}
           />
         </section>
         <section className="stats-section  hook-hold">
