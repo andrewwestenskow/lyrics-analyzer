@@ -7,7 +7,7 @@ const {
 const AntdScssThemePlugin = require('antd-scss-theme-plugin')
 
 const addLoader = config => {
-  config.plugins.push(new AntdScssThemePlugin('src/theme.scss'))
+  config.plugins.push(new AntdScssThemePlugin('src/styles/theme.scss'))
   return config
 }
 
