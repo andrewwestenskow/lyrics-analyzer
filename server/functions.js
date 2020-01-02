@@ -113,39 +113,39 @@ module.exports = {
       .reduce(
         (acc, element) => {
           if (commonWords.includes(element.id)) {
-            acc.children[0].children.push(element)
+            acc.children.common.children.push(element)
             return acc
           } else if (profanity.includes(element.id)) {
-            acc.children[2].children.push(element)
+            acc.children.profanity.children.push(element)
             return acc
           } else if (pronouns.includes(element.id)) {
-            acc.children[3].children.push(element)
+            acc.children.pronouns.children.push(element)
             return acc
           } else {
-            acc.children[1].children.push(element)
+            acc.children.complex.children.push(element)
             return acc
           }
         },
         {
           id: 'wordCount',
-          children: [
-            {
+          children: {
+            common: {
               id: 'common',
               children: [],
             },
-            {
+            complex: {
               id: 'complex',
               children: [],
             },
-            {
+            profanity: {
               id: 'profanity',
               children: [],
             },
-            {
+            pronouns: {
               id: 'pronouns',
               children: [],
             },
-          ],
+          },
         }
       )
 
@@ -153,22 +153,22 @@ module.exports = {
       {
         id: 'common',
         label: 'Common',
-        value: wordCount.children[0].children.length,
+        value: wordCount.children.common.children.length,
       },
       {
         id: 'profanity',
         label: 'Profanity',
-        value: wordCount.children[2].children.length,
+        value: wordCount.children.profanity.children.length,
       },
       {
         id: 'complex',
         label: 'Complex',
-        value: wordCount.children[1].children.length,
+        value: wordCount.children.complex.children.length,
       },
       {
         id: 'pronouns',
         label: 'Pronouns',
-        value: wordCount.children[3].children.length,
+        value: wordCount.children.pronouns.children.length,
       },
     ]
 
@@ -177,19 +177,19 @@ module.exports = {
         id: 'total',
         label: 'Total',
         value:
-          wordCount.children[0].children.length +
-          wordCount.children[1].children.length +
-          wordCount.children[2].children.length +
-          wordCount.children[3].children.length,
+          wordCount.children.common.children.length +
+          wordCount.children.pronouns.children.length +
+          wordCount.children.profanity.children.length +
+          wordCount.children.complex.children.length,
       },
     ]
 
-    wordCount.children[1].children.splice(25, Infinity)
+    wordCount.children.complex.children.splice(25, Infinity)
 
     let colorCounter = 0
     const numList = ['one', 'two', 'three', 'four', 'five', 'six']
 
-    wordCount.children[1].children.forEach(element => {
+    wordCount.children.complex.children.forEach(element => {
       element.colorPosition = colorCounter
       element.colorCounter = numList[colorCounter]
       if (colorCounter < 5) {
@@ -199,7 +199,7 @@ module.exports = {
       }
     })
 
-    wordCount.children[3].children.forEach(element => {
+    wordCount.children.pronouns.children.forEach(element => {
       element.colorPosition = colorCounter
       element.colorCounter = numList[colorCounter]
       if (colorCounter < 5) {
