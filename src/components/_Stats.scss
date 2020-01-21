@@ -2,6 +2,7 @@ $label-height: 50px;
 
 .Stats {
   @include main-content-reset;
+  overflow-y: auto;
 }
 
 .card-container {

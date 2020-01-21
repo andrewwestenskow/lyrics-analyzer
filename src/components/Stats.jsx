@@ -13,18 +13,37 @@ const Stats = ({ stats, song, colorsArr, background, loading, isDesktop }) => {
       <div style={{ background: background }} className="Stats">
         <SongInfo song={song} />
         <section className="stats-section">
-          <InfoTable
-            isDesktop={isDesktop}
-            loading={loading}
-            song={song}
-            stats={stats}
-          />
           <UniqueWords
             isDesktop={isDesktop}
             loading={loading}
             stats={stats}
             colorsArr={colorsArr}
           />
+          <InfoTable
+            isDesktop={isDesktop}
+            loading={loading}
+            song={song}
+            stats={stats}
+          />
+        </section>
+        <section className="stats-section  hook-hold">
+          <h1 className="stats-section-header">Words</h1>
+          <div className="predicted-hook-hold">
+            <p className="predicted-hook">Most common word:</p>
+            <p className="actual-hook">
+              {loading
+                ? 'Calculating'
+                : stats.wordCount.children.complex.children[0].id}
+            </p>
+          </div>
+          <div className="predicted-hook-hold">
+            <p className="predicted-hook">Most common pronoun:</p>
+            <p className="actual-hook">
+              {loading
+                ? 'Calculating'
+                : stats.wordCount.children.pronouns.children[0].id}
+            </p>
+          </div>
         </section>
         <section className="stats-section">
           <WordsTree

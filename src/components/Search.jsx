@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import SearchResults from './SearchResults'
 import SearchInput from './SearchInput'
+import { Icon } from 'antd'
+import { withRouter } from 'react-router-dom'
 
-const Search = ({ setSong, setStats, isDesktop }) => {
+const Search = ({ setSong, setStats, isDesktop, history }) => {
   const [term, setTerm] = useState('')
   const [results, setResults] = useState([])
   const [page, setPage] = useState(0)
@@ -43,6 +45,16 @@ const Search = ({ setSong, setStats, isDesktop }) => {
   }
   return (
     <div className="Search">
+      <Icon
+        onClick={() => history.push('/')}
+        style={{
+          color: 'white',
+          fontSize: '2.2rem',
+          position: 'absolute',
+          left: '15px',
+        }}
+        type="home"
+      />
       <SearchInput
         isDesktop={isDesktop}
         loading={loadingSearch}
@@ -63,4 +75,4 @@ const Search = ({ setSong, setStats, isDesktop }) => {
     </div>
   )
 }
-export default Search
+export default withRouter(Search)

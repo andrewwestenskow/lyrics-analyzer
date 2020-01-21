@@ -1,18 +1,22 @@
 import React from 'react'
 import { Descriptions, Card } from 'antd'
-import { smallTableHold } from '../../constants/styles'
+import { halfTableHold } from '../../constants/styles'
 
 const InfoTable = ({ song, loading, stats, isDesktop }) => {
   const { title, primary_artist, album, release_date, writer_artists } = song
 
   return loading ? (
     <Card
-      bodyStyle={smallTableHold(isDesktop)}
+      bodyStyle={halfTableHold(isDesktop)}
       title="Loading Stats"
       loading={loading}
     ></Card>
   ) : (
-    <Card className="card-container" bodyStyle={smallTableHold(isDesktop)}>
+    <Card
+      title="Song stats"
+      className="card-container"
+      bodyStyle={halfTableHold(isDesktop)}
+    >
       <Descriptions column={1} bordered>
         <Descriptions.Item label="Title">{title}</Descriptions.Item>
         <Descriptions.Item label="Artist">
@@ -27,7 +31,10 @@ const InfoTable = ({ song, loading, stats, isDesktop }) => {
           {stats.totalUnique[0].value}
         </Descriptions.Item>
         <Descriptions.Item label="Predicted Hook">
-          {stats.phrases[0].phrase}
+          {stats.phrases[0].phrase &&
+            `${stats.phrases[0].phrase
+              .charAt(0)
+              .toUpperCase()}${stats.phrases[0].phrase.slice(1)}`}
         </Descriptions.Item>
       </Descriptions>
     </Card>

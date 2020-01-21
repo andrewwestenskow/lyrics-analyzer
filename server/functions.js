@@ -2,7 +2,7 @@ const { exclusions, commonWords, profanity, pronouns } = require('./constants')
 
 module.exports = {
   analyze: lyrics => {
-    const lyricArr = lyrics.split(/[\n()"!.]/)
+    const lyricArr = lyrics.split(/[\n()"!]/)
 
     const filterArr = lyricArr
       .map(element => element.toLowerCase().trim())
@@ -21,6 +21,9 @@ module.exports = {
 
     const phrases = filterArr
       .reduce((acc, element) => {
+        if (element.length === 1) {
+          return acc
+        }
         let match = false
         if (acc.length === 0) {
           acc.push({
