@@ -12,7 +12,7 @@ const Stats = ({ stats, song, colorsArr, background, loading, isDesktop }) => {
     <>
       <div style={{ background: background }} className="Stats">
         <SongInfo song={song} />
-        <section className="stats-section">
+        <section className="stats-section words-section">
           <UniqueWords
             isDesktop={isDesktop}
             loading={loading}

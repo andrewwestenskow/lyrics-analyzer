@@ -1,1 +1,1 @@
-export const bigBreak = '(min-width: 900px)'
+export const bigBreak = '(min-width: 1100px)'

@@ -20,7 +20,7 @@ const SearchInput = props => {
       loading={props.loading}
       onChange={e => setSearch(e.target.value)}
       onSearch={value => handleSearch(value)}
-      style={{ maxWidth: isDesktop ? '500px' : '80%' }}
+      style={{ maxWidth: isDesktop ? '500px' : '60%' }}
     />
   )
 }

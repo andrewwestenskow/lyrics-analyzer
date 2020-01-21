@@ -28,6 +28,12 @@ $label-height: 50px;
   }
 }
 
+.words-section {
+  @media screen and (max-width: $big-break) {
+    flex-direction: column-reverse;
+  }
+}
+
 .custom-tooltip {
   background: rgba(255, 255, 255, 0.9);
   max-width: 250px;
