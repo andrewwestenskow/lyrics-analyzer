@@ -4,14 +4,22 @@ import { Drawer } from 'antd'
 import { drawerBodyStyle, outerDrawerStyle } from '../constants/styles'
 import { withRouter } from 'react-router-dom'
 
-const SearchResults = props => {
+const SearchResults = ({
+  setResults,
+  history,
+  results: data,
+  loadingSearch,
+  page,
+  searchNewPage,
+  isDesktop,
+}) => {
   const getLyrics = async song => {
-    props.setResults([])
+    setResults([])
 
-    props.history.push(`/lyrics?id=${song.id}`)
+    history.push(`/lyrics?id=${song.id}`)
   }
 
-  const results = props.results.map(element => {
+  const results = data.map(element => {
     const { result } = element
     return (
       <div
@@ -35,29 +43,29 @@ const SearchResults = props => {
     <Drawer
       title={'Results'}
       placement="top"
-      visible={props.loadingSearch || !!props.results.length}
-      bodyStyle={drawerBodyStyle}
+      visible={loadingSearch || !!results.length}
+      bodyStyle={drawerBodyStyle(isDesktop)}
       zIndex={99}
       closable={true}
       maskClosable={true}
-      onClose={() => props.setResults([])}
-      height={600 + (props.results.length === 20 || props.page !== 0 ? 50 : 0)}
+      onClose={() => setResults([])}
+      height={600 + (results.length === 20 || page !== 0 ? 50 : 0)}
       drawerStyle={outerDrawerStyle}
     >
       {results}
-      {props.results.length > 0 ? (
+      {results.length > 0 ? (
         <div className="results-page-control">
           {results.length === 20 && (
             <div
-              onClick={() => props.searchNewPage(props.page + 1)}
+              onClick={() => searchNewPage(page + 1)}
               className="page-button next-page"
             >
               Next
             </div>
           )}
-          {props.page > 0 && (
+          {page > 0 && (
             <div
-              onClick={() => props.searchNewPage(props.page - 1)}
+              onClick={() => searchNewPage(page - 1)}
               className="page-button prev-page"
             >
               Prev
@@ -65,7 +73,7 @@ const SearchResults = props => {
           )}
         </div>
       ) : (
-        props.loadingSearch && (
+        loadingSearch && (
           <div className="loading">
             <BounceLoader />
             <p className="loading-text">Loading</p>

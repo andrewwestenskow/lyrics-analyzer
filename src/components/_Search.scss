@@ -74,6 +74,9 @@
     color: white;
     cursor: pointer;
   }
+  @media screen and (max-width: $big-break) {
+    width: 100%;
+  }
 }
 
 .result-image {

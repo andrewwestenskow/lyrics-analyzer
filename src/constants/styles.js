@@ -1,10 +1,13 @@
-export const drawerBodyStyle = {
-  width: '100vw',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  flexWrap: 'wrap',
-  color: 'white',
+export const drawerBodyStyle = isDesktop => {
+  return {
+    width: '100vw',
+    display: 'flex',
+    flexDirection: isDesktop ? 'row' : 'column',
+    justifyContent: isDesktop ? 'center' : 'flex-start',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    color: 'white',
+  }
 }
 
 export const outerDrawerStyle = {

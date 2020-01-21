@@ -26,6 +26,9 @@
       .song-title {
         font-size: 2.5rem;
         font-weight: 700;
+        @media screen and (max-width: $big-break) {
+          font-size: 1.2rem;
+        }
       }
       .song-link {
         font-size: 1.2rem;
@@ -33,7 +36,7 @@
     }
   }
   @media screen and (max-width: $big-break) {
-    margin-bottom: 75px;
+    margin-bottom: 0;
     &:after {
       border-bottom: none;
     }

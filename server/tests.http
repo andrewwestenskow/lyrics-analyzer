@@ -1,0 +1,12 @@
+@baseUrl = http://localhost:7337
+
+## Useful chamber
+GET {{baseUrl}}/api/lyrics?id=169683
+
+###
+## Search
+
+GET {{baseUrl}}/api/lyrics/search
+?term=panda
+?page=1
+

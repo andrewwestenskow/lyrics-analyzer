@@ -3,7 +3,7 @@ import axios from 'axios'
 import SearchResults from './SearchResults'
 import SearchInput from './SearchInput'
 
-const Search = props => {
+const Search = ({ setSong, setStats, isDesktop }) => {
   const [term, setTerm] = useState('')
   const [results, setResults] = useState([])
   const [page, setPage] = useState(0)
@@ -43,10 +43,15 @@ const Search = props => {
   }
   return (
     <div className="Search">
-      <SearchInput loading={loadingSearch} handleSearch={handleSearch} />
+      <SearchInput
+        isDesktop={isDesktop}
+        loading={loadingSearch}
+        handleSearch={handleSearch}
+      />
       <SearchResults
-        setSong={props.setSong}
-        setStats={props.setStats}
+        isDesktop={isDesktop}
+        setSong={setSong}
+        setStats={setStats}
         loadingSearch={loadingSearch}
         page={page}
         searchNewPage={searchNewPage}

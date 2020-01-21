@@ -4,6 +4,7 @@ import { Input } from 'antd'
 const { Search } = Input
 
 const SearchInput = props => {
+  const { isDesktop } = props
   const [search, setSearch] = useState('')
 
   const handleSearch = e => {
@@ -19,7 +20,7 @@ const SearchInput = props => {
       loading={props.loading}
       onChange={e => setSearch(e.target.value)}
       onSearch={value => handleSearch(value)}
-      style={{ maxWidth: '500px' }}
+      style={{ maxWidth: isDesktop ? '500px' : '80%' }}
     />
   )
 }
