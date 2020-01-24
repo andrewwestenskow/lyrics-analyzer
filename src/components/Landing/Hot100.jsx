@@ -1,8 +1,16 @@
 import React from 'react'
 import { Table, Divider } from 'antd'
 import { assignColor } from '../../functions/formatHot100'
+import axios from 'axios'
 
-const Hot100 = ({ data, loading }) => {
+const Hot100 = ({ data, loading, history }) => {
+  const handleRedirect = async (title, artist) => {
+    const {
+      data: { id },
+    } = await axios.get(`/api/song?title=${title}&artist=${artist}`)
+    history.push(`/lyrics?id=${id}`)
+  }
+
   const columns = [
     {
       title: 'Rank',
@@ -16,8 +24,13 @@ const Hot100 = ({ data, loading }) => {
       dataIndex: 'cover',
       key: 'cover',
       className: 'landing-img-column',
-      render: imgUrl => (
-        <img alt={imgUrl} className="landing-img" src={imgUrl} />
+      render: (imgUrl, record) => (
+        <img
+          onClick={() => handleRedirect(record.title, record.artist)}
+          alt={imgUrl}
+          className="landing-img"
+          src={imgUrl}
+        />
       ),
     },
     {
@@ -26,6 +39,14 @@ const Hot100 = ({ data, loading }) => {
       key: 'title',
       className: 'chart-info-column',
       ellipsis: true,
+      render: (text, record) => (
+        <p
+          style={{ all: 'unset' }}
+          onClick={() => handleRedirect(record.title, record.artist)}
+        >
+          {text}
+        </p>
+      ),
     },
     {
       title: 'Artist',
@@ -33,6 +54,14 @@ const Hot100 = ({ data, loading }) => {
       key: 'artist',
       className: 'chart-info-column',
       ellipsis: true,
+      render: (text, record) => (
+        <p
+          style={{ all: 'unset' }}
+          onClick={() => handleRedirect(record.title, record.artist)}
+        >
+          {text}
+        </p>
+      ),
     },
     {
       title: 'Peak/Duration',

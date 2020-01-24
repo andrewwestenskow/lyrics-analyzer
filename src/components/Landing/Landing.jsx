@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Hot100 from './Hot100'
 import axios from 'axios'
 
-const Landing = props => {
+const Landing = ({ history }) => {
   const [hot100, setHot100] = useState([])
   const [isLoadingHot100, setIsLoadingHot100] = useState(true)
   useEffect(() => {
@@ -16,7 +16,7 @@ const Landing = props => {
     <div className="Landing">
       <section className="landing-row">
         <div className="half-landing-hold">OTHER INFO HERE</div>
-        <Hot100 data={hot100} loading={isLoadingHot100} />
+        <Hot100 history={history} data={hot100} loading={isLoadingHot100} />
       </section>
     </div>
   )

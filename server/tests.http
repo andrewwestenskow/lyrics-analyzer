@@ -15,3 +15,9 @@ GET {{baseUrl}}/api/lyrics/search
 
 GET {{baseUrl}}/api/charts/hot-100
 
+###
+## Get genius id
+
+GET {{baseUrl}}/api/song
+?title=old town road
+

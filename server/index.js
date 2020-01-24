@@ -19,5 +19,6 @@ app.get('/api/lyrics/search', lyricsCtrl.search)
 app.get('/api/lyrics', lyricsCtrl.getLyrics)
 
 app.get('/api/charts/hot-100', chartsCtrl.getCurrentChart)
+app.get('/api/song', chartsCtrl.getGeniusId)
 
 app.listen(SERVER_PORT, () => console.log(`listening on port ${SERVER_PORT}`))
