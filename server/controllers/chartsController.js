@@ -28,7 +28,7 @@ module.exports = {
   getCurrentChart: (req, res) => {
     getChart('hot-100', moment().format('YYYY-MM-DD'), (err, chart) => {
       chart.songs.splice(51, Infinity)
-      res.status(200).send(chart)
+      res.status(200).send(chart.songs)
     })
   },
 }

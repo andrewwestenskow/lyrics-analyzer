@@ -1,11 +1,11 @@
 import React from 'react'
 import SongInfo from './SongInfo'
-import InfoTable from './Tables/InfoTable'
-import UniqueWords from './Charts/UniqueWords'
-import WordsTree from './Charts/WordsTree'
-import PronounsTree from './Charts/PronounsTree'
-import TopPhrases from './Charts/TopPhrases'
-import PhrasesLegend from './Legends/PhrasesLegend'
+import InfoTable from '../Tables/InfoTable'
+import UniqueWords from '../Charts/UniqueWords'
+import WordsTree from '../Charts/WordsTree'
+import PronounsTree from '../Charts/PronounsTree'
+import TopPhrases from '../Charts/TopPhrases'
+import PhrasesLegend from '../Legends/PhrasesLegend'
 
 const Stats = ({ stats, song, colorsArr, background, loading, isDesktop }) => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react'
 import { BounceLoader } from 'react-spinners'
 import { Drawer } from 'antd'
-import { drawerBodyStyle, outerDrawerStyle } from '../constants/styles'
+import { drawerBodyStyle, outerDrawerStyle } from '../../constants/styles'
 import { withRouter } from 'react-router-dom'
 
 const SearchResults = ({

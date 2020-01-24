@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Stats from './Stats'
 import axios from 'axios'
 import queryString from 'query-string'
-import useColors from '../hooks/useColors'
+import useColors from '../../hooks/useColors'
 
 const Display = ({ location, isDesktop }) => {
   const [song, setSong] = useState({})
