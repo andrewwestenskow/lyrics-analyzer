@@ -25,12 +25,14 @@ const Hot100 = ({ data, loading }) => {
       dataIndex: 'title',
       key: 'title',
       className: 'chart-info-column',
+      ellipsis: true,
     },
     {
       title: 'Artist',
       dataIndex: 'artist',
       key: 'artist',
       className: 'chart-info-column',
+      ellipsis: true,
     },
     {
       title: 'Peak/Duration',
@@ -38,14 +40,7 @@ const Hot100 = ({ data, loading }) => {
       key: 'position',
       className: 'chart-info-column',
       render: position => (
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
+        <div className="chart-stats-hold">
           <p>{`Peak: ${position.peakPosition}`}</p>
           <Divider style={{ backgroundColor: 'black', margin: 0 }} />
           <p>{`${position.weeksOnChart} weeks on chart`}</p>

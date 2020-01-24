@@ -4,9 +4,10 @@
 }
 
 @mixin column-text {
-  font-size: 1.2rem;
-  text-align: center !important;
+  font-size: 1.3rem;
+  text-align: left !important;
   vertical-align: middle;
+  font-weight: 700;
 }
 
 .landing-row {
@@ -21,6 +22,7 @@
   font-size: 2rem;
   text-align: center;
   vertical-align: middle;
+  width: 10%;
 }
 
 td.landing-img-column {
@@ -40,4 +42,11 @@ td.landing-img-column {
 
 .chart-info-column {
   @include column-text;
+}
+
+.chart-stats-hold {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
