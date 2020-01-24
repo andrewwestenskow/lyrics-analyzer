@@ -10,3 +10,8 @@ GET {{baseUrl}}/api/lyrics/search
 ?term=panda
 ?page=1
 
+###
+## Current chart
+
+GET {{baseUrl}}/api/charts/hot-100
+

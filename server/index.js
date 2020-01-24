@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const { SERVER_PORT } = process.env
 const lyricsCtrl = require('./controllers/lyricsController')
+const chartsCtrl = require('./controllers/chartsController')
 
 app.use(express.json())
 
@@ -16,5 +17,7 @@ app.use((req, res, next) => {
 
 app.get('/api/lyrics/search', lyricsCtrl.search)
 app.get('/api/lyrics', lyricsCtrl.getLyrics)
+
+app.get('/api/charts/hot-100', chartsCtrl.getCurrentChart)
 
 app.listen(SERVER_PORT, () => console.log(`listening on port ${SERVER_PORT}`))
