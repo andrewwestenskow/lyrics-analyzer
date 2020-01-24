@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Card } from 'antd'
+import Hot100 from './Hot100'
 import axios from 'axios'
 
 const Landing = props => {
@@ -11,10 +11,13 @@ const Landing = props => {
       setIsLoadingHot100(false)
     })
   }, [])
-  console.log(hot100)
+
   return (
     <div className="Landing">
-      <Card title="the thing is">Here's the thing</Card>
+      <section className="landing-row">
+        <div className="half-landing-hold">OTHER INFO HERE</div>
+        <Hot100 data={hot100} loading={isLoadingHot100} />
+      </section>
     </div>
   )
 }

@@ -1,3 +1,43 @@
 .Landing {
   @include main-content-reset;
+  overflow-y: auto;
+}
+
+@mixin column-text {
+  font-size: 1.2rem;
+  text-align: center !important;
+  vertical-align: middle;
+}
+
+.landing-row {
+  display: flex;
+}
+
+.half-landing-hold {
+  width: 50%;
+}
+
+.rank-column {
+  font-size: 2rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+td.landing-img-column {
+  padding: 0 !important;
+}
+
+.landing-img-column {
+  height: 100px;
+  width: 100px;
+  @include column-text;
+  .landing-img {
+    width: 100%;
+    height: 100%;
+    @include column-text;
+  }
+}
+
+.chart-info-column {
+  @include column-text;
 }
