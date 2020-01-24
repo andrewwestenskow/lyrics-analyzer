@@ -68,6 +68,8 @@ module.exports = {
       )
     })
 
+    console.log(info)
+
     res.status(200).send({ id: info.result.id })
   },
 }
