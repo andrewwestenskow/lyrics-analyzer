@@ -5,7 +5,6 @@ require('dotenv').config()
 const { ACCESS_TOKEN } = process.env
 const querystring = require('querystring')
 const { analyze } = require('../functions')
-const chartsCtrl = require('./chartsController')
 
 module.exports = {
   search: async (req, res) => {
@@ -44,8 +43,6 @@ module.exports = {
     } = await axios(options)
 
     const { url, title, release_date } = song
-
-    chartsCtrl.getCharts(title, release_date)
 
     try {
       request(url, (err, result, html) => {

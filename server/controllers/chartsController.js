@@ -5,6 +5,9 @@ const axios = require('axios')
 const { getChart, listCharts } = require('billboard-top-100')
 const moment = require('moment')
 
+let chartCache = []
+let lastRetrieved = ''
+
 module.exports = {
   getCharts: (title, releaseDate) => {
     // listCharts((err, chart) => chart.forEach(element => console.log(element)))
@@ -30,9 +33,50 @@ module.exports = {
   },
 
   getCurrentChart: (req, res) => {
-    getChart('hot-100', moment().format('YYYY-MM-DD'), (err, chart) => {
-      res.status(200).send(chart.songs)
-    })
+    const currentDayOfYear = +moment().format('DDDD')
+    const currentDayOfWeek = +moment().format('e')
+    let now
+
+    if (currentDayOfWeek !== 6 && currentDayOfWeek !== 5) {
+      now = moment()
+        .subtract(1, 'week')
+        .format('YYYY-MM-DD')
+    } else {
+      now = moment().format('YYYY-MM-DD')
+    }
+    const currentWeekOfYear = +moment(now).format('WW')
+
+    const getNewChart = chartDate => {
+      getChart('hot-100', chartDate, (err, chart) => {
+        console.log('Fetching new chart')
+        if (err) {
+          console.log(err)
+          return res.status(500).send(err)
+        }
+
+        lastRetrieved = chartDate
+
+        chartCache = [...chart.songs]
+
+        return res.status(200).send(chartCache)
+      })
+    }
+
+    if (lastRetrieved && chartCache.length) {
+      const lastDayOfYearRetrieved = +moment(lastRetrieved).format('DDDD')
+      const lastWeekOfYearRetrieved = +moment(lastRetrieved).format('WW')
+
+      if (
+        currentDayOfYear - lastDayOfYearRetrieved > 6 &&
+        currentWeekOfYear !== lastWeekOfYearRetrieved
+      ) {
+        getNewChart(now)
+      } else {
+        return res.status(200).send(chartCache)
+      }
+    } else {
+      getNewChart(now)
+    }
   },
 
   getGeniusId: async (req, res) => {

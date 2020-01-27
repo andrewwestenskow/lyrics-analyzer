@@ -38,7 +38,8 @@
     "style-loader": "^1.1.2"
   },
   "scripts": {
-    "start": "concurrently \"nodemon\" \"react-app-rewired start\"",
+    "dev": "concurrently \"nodemon\" \"react-app-rewired start\"",
+    "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
