@@ -98,6 +98,8 @@ module.exports = {
       },
     } = await axios(options)
 
+    console.log(hits)
+
     const info = hits.find(element => {
       const {
         result: {
@@ -107,12 +109,14 @@ module.exports = {
       } = element
 
       return (
-        title.toLowerCase().includes(geniusTitle.toLowerCase()) &&
-        artist.toLowerCase().includes(name.toLowerCase())
+        (artist.toLowerCase().includes(name.toLowerCase()) ||
+          name.toLowerCase().includes(artist.toLowerCase())) &&
+        (title.toLowerCase().includes(geniusTitle.toLowerCase()) ||
+          geniusTitle.toLowerCase().includes(title.toLowerCase()))
       )
     })
 
-    console.log(info)
+    // console.log(info)
 
     res.status(200).send({ id: info.result.id })
   },
