@@ -1,6 +1,6 @@
 import React from 'react'
 import { Table, Divider } from 'antd'
-import { assignColor } from '../../functions/formatHot100'
+import { assignColor, chartTitle } from '../../functions/formatHot100'
 import axios from 'axios'
 
 const Hot100 = ({ data, loading, history }) => {
@@ -80,6 +80,9 @@ const Hot100 = ({ data, loading, history }) => {
 
   return (
     <div className="half-landing-hold">
+      <div className="landing-table-title">
+        {chartTitle('Billboard Hot 100')}
+      </div>
       <Table
         columns={columns}
         dataSource={data}

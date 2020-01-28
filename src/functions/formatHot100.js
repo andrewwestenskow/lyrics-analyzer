@@ -107,6 +107,29 @@ let spectrum = [
   '#0099FF',
 ]
 
+export const chartTitle = text => {
+  const formattedGradient = spectrum.reduce((acc, element, index, array) => {
+    if (index === array.length - 1) {
+      return `${acc}, ${element})`
+    } else if (index === 0) {
+      return `${acc}${element}`
+    } else {
+      return `${acc}, ${element}`
+    }
+  }, `-webkit-linear-gradient(`)
+  return (
+    <p
+      style={{
+        background: formattedGradient,
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+      }}
+    >
+      {text}
+    </p>
+  )
+}
+
 export const assignColor = rank => {
   return <p style={{ color: spectrum[rank - 1] }}>{rank}</p>
 }
