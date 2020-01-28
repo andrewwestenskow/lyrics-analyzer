@@ -1,6 +1,9 @@
 .Landing {
   @include main-content-reset;
   overflow-y: auto;
+  @media screen and (max-width: $big-break) {
+    padding: 5px;
+  }
 }
 
 @mixin column-text {
@@ -9,14 +12,23 @@
   vertical-align: middle;
   font-weight: 700;
   cursor: pointer;
+  @media screen and (max-width: $big-break) {
+    font-size: 1rem;
+  }
 }
 
 .landing-row {
   display: flex;
+  @media screen and (max-width: $big-break) {
+    flex-direction: column;
+  }
 }
 
 .half-landing-hold {
   width: 50%;
+  @media screen and (max-width: $big-break) {
+    width: 100%;
+  }
 }
 
 .rank-column {
@@ -24,6 +36,9 @@
   text-align: center;
   vertical-align: middle;
   width: 10%;
+  @media screen and (max-width: $big-break) {
+    line-height: 85%;
+  }
 }
 
 td.landing-img-column {
@@ -39,6 +54,10 @@ td.landing-img-column {
     height: 100%;
     @include column-text;
     cursor: pointer;
+  }
+  @media screen and (max-width: $big-break) {
+    height: 50px;
+    width: 50px;
   }
 }
 

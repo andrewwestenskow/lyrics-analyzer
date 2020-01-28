@@ -47,8 +47,8 @@ module.exports = {
     const currentWeekOfYear = +moment(now).format('WW')
 
     const getNewChart = chartDate => {
+      console.log('Fetching new chart...')
       getChart('hot-100', chartDate, (err, chart) => {
-        console.log('Fetching new chart')
         if (err) {
           console.log(err)
           return res.status(500).send(err)
@@ -98,7 +98,7 @@ module.exports = {
       },
     } = await axios(options)
 
-    console.log(hits)
+    // console.log(hits)
 
     const info = hits.find(element => {
       const {
