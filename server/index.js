@@ -5,6 +5,7 @@ const { SERVER_PORT } = process.env
 const lyricsCtrl = require('./controllers/lyricsController')
 const chartsCtrl = require('./controllers/chartsController')
 
+app.use(express.static(`${__dirname}/../build`))
 app.use(express.json())
 
 app.use((req, res, next) => {
